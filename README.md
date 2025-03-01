@@ -63,5 +63,5 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine avant 
 Clonez ce projet sur votre machine locale en utilisant la commande suivante :
 
 ```bash
-git clone https://github.com/votre-utilisateur/plateforme-evaluation.git
+git clone https://github.com/SSDM2/ESP_DBEval.git
 cd plateforme-evaluation
