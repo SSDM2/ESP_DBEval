@@ -66,6 +66,3 @@ Tous les composants sont construits avec React et stylisés à l'aide de Tailwin
 - Nouveaux composants UI et amélioration des composants existants
 
 ---
-
-J'ai fait quelques ajustements pour améliorer la lisibilité et la cohérence du texte, tout en conservant l'intégralité de votre message.
----
