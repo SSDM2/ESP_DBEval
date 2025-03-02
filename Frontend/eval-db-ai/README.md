@@ -1,15 +1,14 @@
 ## Installation
 
 ### Prérequis
-<<<<<<< HEAD
+
 Avant de commencer avec ce projet, assurez-vous d'avoir les prérequis suivants installés et configurés :
 
 - Node.js 18.x ou une version ultérieure (il est recommandé d'utiliser Node.js 20.x ou une version plus récente)
-=======
+
 Pour commencer avec ce projet, assurez-vous d'avoir les prérequis suivants installés et configurés :
 
 - Node.js 18.x ou version ultérieure (il est recommandé d'utiliser Node.js 20.x ou version ultérieure)
->>>>>>> 9ec206796093a2aea6acbbdc7119c15d1bb47e11
 
 ### Cloner le Dépôt
 Clonez le dépôt en utilisant la commande suivante :
