@@ -1,5 +1,3 @@
-Voici la version révisée de la **charte graphique** en utilisant **Tailwind CSS**, **Roboto** pour les polices, et **FontAwesome** pour les icônes.
-
 ---
 
 ## Charte Graphique de la Plateforme d'Évaluation Automatisée
@@ -24,7 +22,7 @@ Nous allons utiliser la palette de couleurs de **Tailwind CSS** pour la cohéren
 ### 2.1 **Couleurs principales**
 Les couleurs principales de la plateforme sont le bleu, qui représente la technologie et la confiance, et le vert, qui symbolise la progression.
 
-- **Bleu principal** (`bg-blue-600`, `text-blue-600`)  
+- **Bleu principal** (`bg-blue-600`, `text-blue-800`)  
   - Code Hex : `#2563EB`  
   - Utilisé pour les boutons principaux, les liens, les titres, et l’en-tête.
   
@@ -144,7 +142,7 @@ Exemple de code pour une carte :
 Utilisez des icônes de **FontAwesome** pour représenter visuellement les actions. Vous pouvez ajouter FontAwesome à votre projet avec le lien suivant :
 
 ```html
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+   https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css
 ```
 
 Exemples d’icônes à utiliser :
