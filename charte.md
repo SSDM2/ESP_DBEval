@@ -1,4 +1,4 @@
-Voici la version révisée de la **charte graphique** en utilisant **Tailwind CSS**, **Roboto** pour les polices, et **FontAwesome** pour les icônes.
+**charte graphique** en utilisant **Tailwind CSS**, **Roboto** pour les polices, et **FontAwesome** pour les icônes.
 
 ---
 
