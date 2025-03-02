@@ -1,5 +1,3 @@
-**charte graphique** en utilisant **Tailwind CSS**, **Roboto** pour les polices, et **FontAwesome** pour les icônes.
-
 ---
 
 ## Charte Graphique de la Plateforme d'Évaluation Automatisée
