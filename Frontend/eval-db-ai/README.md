@@ -34,7 +34,6 @@ git clone https://github.com/Frontend/eval-db-ai
 
 ## Composants
 
-<<<<<<< HEAD
 Ce projet est un modèle pré-conçu pour créer un tableau de bord web basé sur React.js et Tailwind CSS. Le modèle inclut :
 
 - Une barre latérale sophistiquée et accessible
@@ -48,9 +47,6 @@ Ce projet est un modèle pré-conçu pour créer un tableau de bord web basé su
 Tous les composants sont construits avec React et stylisés à l'aide de Tailwind CSS, ce qui facilite leur personnalisation.
 
 #### Fonctionnalités clés
-- Tableaux de bord redessinés (E-commerce, Analytics, Marketing, CRM)
-=======
-Ce projet est un point de départ pré-conçu pour créer un tableau de bord web basé sur React.js et Tailwind CSS. Le modèle inclut :
 
 - Barre latérale sophistiquée et accessible
 - Composants de visualisation de données
@@ -63,17 +59,13 @@ Ce projet est un point de départ pré-conçu pour créer un tableau de bord web
 Tous les composants sont construits avec React et stylisés à l'aide de Tailwind CSS pour une personnalisation facile.
 
 #### Fonctionnalités clés
-- Tableaux de bord redessinés (Ecommerce, Analytics, Marketing, CRM)
->>>>>>> 9ec206796093a2aea6acbbdc7119c15d1bb47e11
+- Tableaux de bord 
 - Navigation améliorée avec intégration de React Router
 - Tables avancées avec tri et filtrage
 - Calendrier avec support du glisser-déposer
 - Nouveaux composants UI et amélioration des composants existants
-<<<<<<< HEAD
 
 ---
 
 J'ai fait quelques ajustements pour améliorer la lisibilité et la cohérence du texte, tout en conservant l'intégralité de votre message.
-=======
 ---
->>>>>>> 9ec206796093a2aea6acbbdc7119c15d1bb47e11
