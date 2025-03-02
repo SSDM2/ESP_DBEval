@@ -11,7 +11,7 @@
 #### Tâches
 
 1. **Mise en place de l’environnement de développement** :
-   - Configuration du projet avec **React.js** (Frontend) et **Express JS** (Backend).
+   - Configuration du projet avec **React.js** (Frontend) et **Django** (Backend).
    - Mise en place du dépôt GitHub/GitLab pour le suivi de version.
    - Configuration du système d’authentification avec OAuth2 pour Google/Microsoft/GitHub.
 
