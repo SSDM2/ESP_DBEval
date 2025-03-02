@@ -14,7 +14,7 @@ Pour commencer avec ce projet, assurez-vous d'avoir les prérequis suivants inst
 Clonez le dépôt en utilisant la commande suivante :
 
 ```bash
-git clone https://github.com/
+git clone https://github.com/Frontend/eval-db-ai
 ```
 
 > Utilisateurs de Windows : placez le dépôt près de la racine de votre disque si vous rencontrez des problèmes lors du clonage.
