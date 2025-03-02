@@ -142,7 +142,7 @@ Exemple de code pour une carte :
 Utilisez des icônes de **FontAwesome** pour représenter visuellement les actions. Vous pouvez ajouter FontAwesome à votre projet avec le lien suivant :
 
 ```html
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+   https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css
 ```
 
 Exemples d’icônes à utiliser :
