@@ -1,0 +1,305 @@
+Voici une liste d'**issues GitHub** spécifiquement pour le **backend** de votre projet de plateforme intelligente d'évaluation automatisée des exercices de bases de données en mode microservices. Ces issues couvrent les fonctionnalités détaillées du backend et permettent de suivre la progression de chaque tâche.
+
+---
+
+### **1. Gestion des utilisateurs et des rôles (User Management Service)**
+
+#### **Issue 1: Création et gestion des comptes utilisateurs**
+- **Description** : Implémenter les fonctionnalités de création, modification, et suppression des comptes utilisateurs (Professeurs, Étudiants, Administrateurs).
+- **Labels** : `backend`, `user-management`, `feature`
+- **Tâches** :
+  - Création d'API pour l'inscription des utilisateurs
+  - API pour modifier et supprimer les comptes utilisateurs
+  - Validation des données d’inscription
+
+#### **Issue 2: Authentification via OAuth2**
+- **Description** : Intégrer l'authentification OAuth2 via Google, Microsoft, et GitHub pour la création de comptes utilisateurs.
+- **Labels** : `backend`, `auth`, `oauth2`
+- **Tâches** :
+  - Intégration OAuth2 avec les services Google, Microsoft, GitHub
+  - Gestion de la création des comptes via OAuth2
+  - Implémentation de tokens JWT pour les sessions
+
+#### **Issue 3: Gestion des rôles et permissions**
+- **Description** : Développer un système de gestion des rôles (Professeur, Étudiant, Administrateur) et attribuer des permissions en fonction du rôle.
+- **Labels** : `backend`, `role-management`, `permissions`
+- **Tâches** :
+  - Création d’un modèle de rôle pour chaque type d’utilisateur
+  - Implémentation des règles de permissions pour chaque rôle
+  - API pour la gestion des rôles
+
+---
+
+### **2. Gestion des exercices (Exercise Management Service)**
+
+#### **Issue 4: Création et gestion des exercices**
+- **Description** : Implémenter la gestion des exercices (ajouter, modifier, supprimer) au format texte/PDF pour les professeurs.
+- **Labels** : `backend`, `exercise-management`, `feature`
+- **Tâches** :
+  - Création d'API pour la gestion des exercices
+  - Validation des fichiers d'exercices
+  - Stockage des exercices dans une base de données ou un système de fichiers
+
+#### **Issue 5: Gestion des modèles de correction**
+- **Description** : Ajouter la gestion des modèles de correction pour chaque exercice, permettant aux professeurs de définir les critères de correction.
+- **Labels** : `backend`, `exercise-management`, `correction-models`
+- **Tâches** :
+  - Création d'un modèle de données pour les modèles de correction
+  - API pour l'ajout et la gestion des modèles de correction
+  - Lien des modèles de correction avec les exercices
+
+#### **Issue 6: Gestion des dates et disponibilités des exercices**
+- **Description** : Implémenter la gestion des dates de publication et de fin des exercices, et leur attribution aux étudiants (par classe ou session).
+- **Labels** : `backend`, `exercise-management`, `feature`
+- **Tâches** :
+  - API pour gérer les dates de publication et de fin des exercices
+  - Logiciel de planification pour attribuer les exercices aux étudiants
+  - Validation des dates
+
+---
+
+### **3. Soumission des réponses (Submission Service)**
+
+#### **Issue 7: Soumission des réponses par les étudiants**
+- **Description** : Permettre aux étudiants de soumettre des réponses au format PDF via une interface de type Drag & Drop.
+- **Labels** : `backend`, `submission-service`, `feature`
+- **Tâches** :
+  - API pour gérer les soumissions de fichiers PDF
+  - Validation du format et de la taille des fichiers soumis
+  - Enregistrement des soumissions dans la base de données
+
+#### **Issue 8: Validation et suivi des fichiers soumis**
+- **Description** : Implémenter la validation des fichiers soumis par les étudiants et suivre l’historique des soumissions.
+- **Labels** : `backend`, `submission-service`, `validation`
+- **Tâches** :
+  - Création d'un processus de validation pour le format des fichiers PDF
+  - Enregistrement des versions des soumissions pour un suivi historique
+  - Mise en place du suivi des soumissions par étudiant
+
+#### **Issue 9: Gestion des versions des réponses**
+- **Description** : Permettre aux étudiants de soumettre plusieurs versions de leurs réponses et de suivre leur historique.
+- **Labels** : `backend`, `submission-service`, `versioning`
+- **Tâches** :
+  - API pour gérer les versions des réponses soumises
+  - Ajout de la possibilité de soumettre une nouvelle version tout en conservant les anciennes
+  - Suivi des modifications des réponses
+
+---
+
+### **4. Correction automatique des exercices (AI Correction Service)**
+
+#### **Issue 10: Implémentation du moteur d’IA pour la correction automatique**
+- **Description** : Développer un moteur d’IA basé sur DeepSeek via Ollama pour la correction des exercices soumis par les étudiants.
+- **Labels** : `backend`, `ai`, `correction`
+- **Tâches** :
+  - Intégration d'API d'IA pour analyser les soumissions
+  - Comparaison des réponses avec les modèles de correction prédéfinis
+  - Traitement des réponses et génération de feedback
+
+#### **Issue 11: Génération de feedback détaillé**
+- **Description** : Générer un retour détaillé expliquant les erreurs des étudiants et suggérant des pistes d'amélioration.
+- **Labels** : `backend`, `ai`, `feedback`
+- **Tâches** :
+  - Création d’un système de feedback détaillé
+  - Analyse des erreurs dans les réponses des étudiants
+  - Génération de suggestions d'amélioration
+
+#### **Issue 12: Apprentissage automatique et affinage du modèle**
+- **Description** : Implémenter une fonctionnalité permettant aux professeurs d'affiner le modèle d'IA en fonction des retours sur les corrections.
+- **Labels** : `backend`, `ai`, `machine-learning`
+- **Tâches** :
+  - Création d'un système pour affiner le modèle d'IA avec des données d'amélioration
+  - Enregistrement des retours des professeurs et des étudiants
+
+---
+
+### **5. Attribution des notes et analyse de la performance (Grading & Performance Service)**
+
+#### **Issue 13: Attribution des notes**
+- **Description** : Implémenter la logique de calcul des notes en fonction des critères définis par les professeurs et du feedback généré par l'IA.
+- **Labels** : `backend`, `grading`, `feature`
+- **Tâches** :
+  - Création d’un algorithme pour attribuer une note sur 20
+  - Intégration des critères d'évaluation (qualité du code, syntaxe SQL, etc.)
+  - Mise en place d'un système de notation flexible
+
+#### **Issue 14: Suivi des performances des étudiants**
+- **Description** : Implémenter un système permettant aux étudiants de suivre leur évolution au fil du temps.
+- **Labels** : `backend`, `analytics`, `feature`
+- **Tâches** :
+  - Développement d'API pour récupérer les performances passées
+  - Gestion des graphiques d’évolution des résultats
+  - Mise en place de la comparaison avec la moyenne de la classe
+
+---
+
+### **6. Gestion de la sécurité et des accès (Security & Access Management Service)**
+
+#### **Issue 15: Authentification sécurisée (OAuth2, 2FA)**
+- **Description** : Mettre en place l'authentification sécurisée via OAuth2 et l’authentification multi-facteurs (2FA).
+- **Labels** : `backend`, `security`, `oauth2`, `2fa`
+- **Tâches** :
+  - Implémentation de l'authentification via OAuth2 pour Google, Microsoft et GitHub
+  - Ajout de la possibilité d'activer 2FA pour une sécurité renforcée
+
+#### **Issue 16: Chiffrement des fichiers PDF**
+- **Description** : Assurer le chiffrement des fichiers PDF soumis pour garantir leur confidentialité.
+- **Labels** : `backend`, `security`, `encryption`
+- **Tâches** :
+  - Mise en place d'un système de chiffrement pour les fichiers PDF
+  - Développement d'un système de gestion des clés pour déchiffrer les fichiers au moment de la correction
+
+---
+
+### **7. Détection de plagiat (Plagiarism Detection Service)**
+
+#### **Issue 17: Algorithmes de détection de plagiat**
+- **Description** : Implémenter des algorithmes de détection de plagiat (par exemple Jaccard, TF-IDF) pour analyser les soumissions des étudiants.
+- **Labels** : `backend`, `plagiarism`, `feature`
+- **Tâches** :
+  - Développement des algorithmes de détection de similitude
+  - Intégration dans le flux de soumission et de correction
+  - Création d'API pour générer les rapports de plagiat
+
+---
+
+Ces **issues backend** couvrent les fonctionnalités principales de votre plateforme en mode microservices et peuvent être réparties en sprints pour une gestion efficace du projet. Ces tâches permettent de suivre facilement le développement de chaque microservice et de s'assurer que chaque fonctionnalité est bien implémentée.
+
+
+Voici une liste d'**issues GitHub** spécifiquement pour le **frontend** de votre projet de plateforme intelligente d'évaluation automatisée des exercices de bases de données en mode microservices. Ces issues couvrent les fonctionnalités détaillées du frontend et permettent de suivre la progression de chaque tâche.
+
+---
+
+### **1. Interface utilisateur pour les Professeurs (Professeurs Dashboard)**
+
+#### **Issue 1: Création de la page d’accueil du Professeur**
+- **Description** : Créer une page d’accueil pour les professeurs avec des informations de base sur leurs exercices et les étudiants.
+- **Labels** : `frontend`, `professor-dashboard`, `feature`
+- **Tâches** :
+  - Développer la page d’accueil avec une liste d'exercices et les statistiques associées
+  - Intégrer des composants pour afficher les notifications et les actions récentes
+
+#### **Issue 2: Tableau de bord du professeur**
+- **Description** : Développer un tableau de bord interactif pour les professeurs avec les statistiques des performances des étudiants.
+- **Labels** : `frontend`, `professor-dashboard`, `analytics`
+- **Tâches** :
+  - Créer un tableau de bord interactif utilisant `Recharts` ou `Chart.js` pour afficher des statistiques de soumissions, taux de réussite, etc.
+  - Ajouter des filtres et options de recherche pour personnaliser les statistiques
+
+#### **Issue 3: Création et gestion des exercices**
+- **Description** : Développer l'interface permettant aux professeurs de créer et de gérer des exercices (téléchargement de fichiers PDF, modèles de correction).
+- **Labels** : `frontend`, `exercise-management`, `feature`
+- **Tâches** :
+  - Interface pour télécharger et gérer des exercices (ajout, modification, suppression)
+  - Interface pour créer et gérer des modèles de correction pour chaque exercice
+
+#### **Issue 4: Gestion des rôles des étudiants**
+- **Description** : Implémenter l’interface permettant aux professeurs de gérer les rôles et les permissions des étudiants dans leurs cours.
+- **Labels** : `frontend`, `role-management`, `feature`
+- **Tâches** :
+  - Interface pour l'attribution et la gestion des rôles des étudiants
+  - Affichage des étudiants avec leurs rôles dans le tableau de bord
+
+---
+
+### **2. Interface utilisateur pour les Étudiants (Étudiants Dashboard)**
+
+#### **Issue 5: Page d’accueil de l’étudiant**
+- **Description** : Créer la page d’accueil pour les étudiants avec une liste de leurs exercices disponibles.
+- **Labels** : `frontend`, `student-dashboard`, `feature`
+- **Tâches** :
+  - Développer la page d’accueil avec la liste des exercices, leur statut (non soumis, soumis, corrigé)
+  - Ajouter un accès facile pour soumettre des réponses et consulter les feedbacks
+
+#### **Issue 6: Soumission des réponses par les étudiants**
+- **Description** : Implémenter l’interface permettant aux étudiants de soumettre leurs réponses au format PDF via une interface Drag & Drop.
+- **Labels** : `frontend`, `submission`, `feature`
+- **Tâches** :
+  - Créer un composant Drag & Drop pour soumettre des fichiers PDF
+  - Validation côté frontend des fichiers soumis (format, taille)
+
+#### **Issue 7: Consultation des corrections et des notes**
+- **Description** : Permettre aux étudiants de consulter leurs réponses corrigées et les notes attribuées.
+- **Labels** : `frontend`, `feedback`, `feature`
+- **Tâches** :
+  - Afficher les notes attribuées aux étudiants sur chaque exercice
+  - Intégrer les feedbacks détaillés générés par l'IA pour chaque soumission
+
+#### **Issue 8: Suivi des performances des étudiants**
+- **Description** : Créer des graphiques d’évolution des performances des étudiants à travers le tableau de bord.
+- **Labels** : `frontend`, `performance`, `feature`
+- **Tâches** :
+  - Créer des graphiques interactifs utilisant `Recharts` ou `Chart.js`
+  - Ajouter des comparaisons entre les performances passées de l’étudiant et la moyenne de la classe
+
+---
+
+### **3. Interface utilisateur générale (pour les deux types d'utilisateurs)**
+
+#### **Issue 9: Interface de connexion et d'inscription**
+- **Description** : Développer une page de connexion et d’inscription pour les utilisateurs (professeurs et étudiants), avec l'intégration de l'authentification OAuth2 (Google, Microsoft, GitHub).
+- **Labels** : `frontend`, `authentication`, `feature`
+- **Tâches** :
+  - Créer une interface pour se connecter avec des comptes externes (Google, Microsoft, GitHub)
+  - Implémenter une interface classique pour la connexion/inscription avec email et mot de passe
+
+#### **Issue 10: Gestion des notifications en temps réel**
+- **Description** : Créer un système de notifications en temps réel pour les étudiants et les professeurs concernant les soumissions, les corrections, etc.
+- **Labels** : `frontend`, `notifications`, `feature`
+- **Tâches** :
+  - Ajouter des notifications en temps réel pour informer les utilisateurs des changements (soumission des réponses, correction terminée)
+  - Implémenter une interface pour gérer les préférences de notifications de l’utilisateur
+
+#### **Issue 11: Interface responsive et optimisée**
+- **Description** : S’assurer que l’interface utilisateur est responsive, fluide et bien optimisée, et qu’elle fonctionne sur différents appareils (desktop, tablette, mobile).
+- **Labels** : `frontend`, `responsive`, `optimization`
+- **Tâches** :
+  - Utiliser `Tailwind CSS` ou `Material UI` pour créer une interface responsive
+  - Tester l'interface sur différents appareils (desktop, tablette, mobile) et ajuster les composants si nécessaire
+
+#### **Issue 12: Implémentation du Mode Sombre (Dark Mode)**
+- **Description** : Ajouter un mode sombre à la plateforme pour améliorer l'expérience utilisateur.
+- **Labels** : `frontend`, `dark-mode`, `feature`
+- **Tâches** :
+  - Implémenter un mode sombre en utilisant `Tailwind CSS` ou une solution spécifique
+  - Permettre à l’utilisateur de basculer entre le mode sombre et clair
+
+---
+
+### **4. Sécurité et gestion des accès (pour l'interface utilisateur)**
+
+#### **Issue 13: Protection contre les attaques CSRF et XSS**
+- **Description** : Mettre en place des protections contre les attaques de type CSRF et XSS sur le frontend.
+- **Labels** : `frontend`, `security`, `csrf`, `xss`
+- **Tâches** :
+  - Implémenter les protections contre les attaques CSRF
+  - Assurer que toutes les entrées utilisateurs sont correctement validées et protégées contre les attaques XSS
+
+#### **Issue 14: Gestion des sessions et cookies**
+- **Description** : Implémenter une gestion sécurisée des sessions et des cookies pour garder les utilisateurs connectés et sécuriser leurs données.
+- **Labels** : `frontend`, `security`, `cookies`, `sessions`
+- **Tâches** :
+  - Mise en place de cookies sécurisés pour maintenir les sessions actives
+  - Implémentation d'une gestion des sessions expirées et d'un mécanisme de déconnexion
+
+---
+
+### **5. Tests et Déploiement du Frontend**
+
+#### **Issue 15: Mise en place des tests unitaires et d'intégration pour le frontend**
+- **Description** : Implémenter des tests unitaires et d’intégration pour garantir la qualité du frontend.
+- **Labels** : `frontend`, `testing`, `feature`
+- **Tâches** :
+  - Utiliser `Jest` et `React Testing Library` pour créer des tests unitaires des composants
+  - Créer des tests d'intégration pour les fonctionnalités principales (soumission de réponses, affichage des feedbacks, etc.)
+
+#### **Issue 16: Configuration de l'intégration continue pour le frontend**
+- **Description** : Mettre en place un pipeline d'intégration continue (CI) pour tester et déployer le frontend à chaque changement.
+- **Labels** : `frontend`, `ci`, `deployment`
+- **Tâches** :
+  - Configurer GitHub Actions ou GitLab CI pour tester le frontend à chaque push
+  - Mettre en place un processus de déploiement automatisé sur une plateforme de production (par exemple, Vercel, Netlify, etc.)
+
+---
+
+Ces **issues frontend** couvrent les fonctionnalités principales du côté utilisateur de votre plateforme et peuvent être réparties en sprints pour une gestion efficace du projet. Ces tâches permettent de suivre facilement le développement de l’interface utilisateur tout en assurant une bonne qualité et une expérience utilisateur optimale.
