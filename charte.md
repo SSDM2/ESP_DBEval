@@ -22,7 +22,7 @@ Nous allons utiliser la palette de couleurs de **Tailwind CSS** pour la cohéren
 ### 2.1 **Couleurs principales**
 Les couleurs principales de la plateforme sont le bleu, qui représente la technologie et la confiance, et le vert, qui symbolise la progression.
 
-- **Bleu principal** (`bg-blue-600`, `text-blue-600`)  
+- **Bleu principal** (`bg-blue-600`, `text-blue-800`)  
   - Code Hex : `#2563EB`  
   - Utilisé pour les boutons principaux, les liens, les titres, et l’en-tête.
   
