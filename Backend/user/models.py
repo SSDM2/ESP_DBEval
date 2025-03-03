@@ -34,7 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects         =   CustomAccountManager()
     email           =   models.EmailField(_('email address'), unique=True)
     uuid            =   models.UUIDField(default=uuid.uuid4,unique=True, editable=False)
-    last_name       =   models.CharField(max_length=150, blank=True)
+    last_name       =   models.CharField(max_length=150, null=False, blank=False)
     first_name      =   models.CharField(max_length=150, blank=True)
     role = models.CharField(
             max_length=10,

@@ -75,9 +75,9 @@ TEMPLATES = [
 
 # settings.py
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',  # Sécurité par défaut
-    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',  # Sécurité par défaut
+    # ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',  # Authentification par session
         'rest_framework.authentication.TokenAuthentication',   # Authentification par token

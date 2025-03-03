@@ -40,17 +40,7 @@ class RegisterProfessorSerializer(serializers.ModelSerializer):
                 'validators': [
                     validators.UniqueValidator(Professor.objects.all(), "Cet email existe déjà")
                 ]
-            },
-            'last_name': {
-                'required': True,
-                'allow_blank': False,
-                'validators': []
-            },
-            'first_name': {
-                'required': True,
-                'allow_blank': False,
-                'validators': []
-            },
+            }
         }
 
     def get_token(self, obj):
