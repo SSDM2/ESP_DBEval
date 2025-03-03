@@ -2,6 +2,8 @@
 
 ```
 /backend
+├── /media                          # Fichiers uploadés (PDF, etc.)
+├── /static                         # Fichiers statiques (CSS, JS, images)
 │
 ├── /config                         # Dossier de configuration global de Django
 │   ├── __init__.py                 # Fichier d'initialisation du projet
@@ -77,6 +79,16 @@
 │   ├── admin.py                    # Administration de l'application (interface d'administration)
 │   ├── apps.py                     # Configuration de l'application Étudiant
 │   └── __init__.py                 # Fichier d'initialisation du microservice Étudiant
+│ 
+├── /ai_correction
+│   ├── /models
+│   │   └── correction_model.py      # Modèle pour la correction automatique
+│   ├── /views
+│   │   └── correction_view.py       # Vues pour la correction automatique
+│   ├── /services
+│   │   └── correction_service.py    # Service pour la correction automatique
+│   └── /tests
+│       └── test_correction.py       # Tests pour la correction automatique
 │
 ├── /shared                         # Composants partagés entre les deux microservices
 │   ├── /auth                       # Logique d'authentification partagée (JWT, OAuth2)
