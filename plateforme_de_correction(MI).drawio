@@ -258,7 +258,7 @@
         <mxCell id="uGVkLpLAQE_LrdhUWMVq-47" value="senderId: Student" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="uGVkLpLAQE_LrdhUWMVq-43" vertex="1">
           <mxGeometry y="104" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="uGVkLpLAQE_LrdhUWMVq-48" value="questionId: Question" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="uGVkLpLAQE_LrdhUWMVq-43" vertex="1">
+        <mxCell id="uGVkLpLAQE_LrdhUWMVq-48" value="exerciseId: Exercise" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="uGVkLpLAQE_LrdhUWMVq-43" vertex="1">
           <mxGeometry y="130" width="160" height="26" as="geometry" />
         </mxCell>
         <mxCell id="uGVkLpLAQE_LrdhUWMVq-49" value="created_at: Datetime" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="uGVkLpLAQE_LrdhUWMVq-43" vertex="1">
