@@ -7,21 +7,28 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 class RoleEnum(Enum):
     PROFESSOR = 'Professor'
     STUDENT = 'Student'
+    ADMIN = ''
 
 class CustomAccountManager(BaseUserManager):
     def create_superuser(self, email, first_name, last_name, password, **other_fields):
         other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
+        other_fields.setdefault('is_staff', True)
             
         if other_fields.get('is_superuser') is not True:
             raise ValueError(
                 'Superuser must be assigned to is_superuser=True.')
+            
+        if other_fields.get('is_staff') is not True:
+            raise ValueError(
+                'Superuser must be assigned to is_staff=True.')
 
         return self.create_user(email, first_name, last_name, password, **other_fields)
 
-    def create_user(self, email, first_name, last_name, password, role=None, **other_fields):
-        if role not in RoleEnum.__members__.values():
-            raise ValueError('Role must be either Professor or Student.')
+    def create_user(self, email, first_name, last_name, password, role='', **other_fields):
+        if role:
+            if role not in [role.name for role in RoleEnum]:
+                raise ValueError('Role must be either Professor or Student.')
         
         email = self.normalize_email(email)
         user = self.model(email=email, first_name=first_name, last_name=last_name, ** other_fields)
@@ -40,6 +47,8 @@ class User(AbstractBaseUser, PermissionsMixin):
             max_length=10,
             choices=[(role.name, role.value) for role in RoleEnum],
         )
+    is_staff = models.BooleanField(default=False)  # Champ requis pour l'interface d'administration
+    is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)  
     
@@ -48,7 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_permissions = models.ManyToManyField('auth.Permission', related_name='user_permissions_custom', blank=True)
     
     USERNAME_FIELD  = 'email'
-    REQUIRED_FIELDS = [ 'first_name','last_name', 'email', ]
+    REQUIRED_FIELDS = [ 'first_name','last_name']
     
     
     @property
