@@ -7,5 +7,5 @@ router.register(r'student', StudentViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('register/', RegisterView.as_view(), name='register'),
+    path('create/', RegisterView.as_view(), name='add_student'),
 ]

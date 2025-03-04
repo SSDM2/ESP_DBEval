@@ -1,8 +1,10 @@
+from professor.models import Professor
+from user.models import RoleEnum
 from .models import Student
 from rest_framework import serializers, validators
 from django.contrib.auth.password_validation import validate_password
-from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
       
 class GetStudentSerializer(serializers.ModelSerializer):
     role = serializers.CharField(source='get_role_display')
@@ -14,11 +16,11 @@ class GetStudentSerializer(serializers.ModelSerializer):
 
 class RegisterStudentSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
-    token = serializers.SerializerMethodField(read_only=True)  # Token généré après l'inscription
-
+    access = serializers.CharField(read_only=True)
+    refresh = serializers.CharField(read_only=True)
     class Meta:
         model = Student
-        fields = ['last_name', 'role', 'first_name', 'email', 'password', 'token']
+        fields = ['uuid', 'last_name', 'first_name', 'email', 'password', 'refresh', 'access','created_at','updated_at']
         extra_kwargs = {
             'password': {'write_only': True},
             'email': {
@@ -30,18 +32,14 @@ class RegisterStudentSerializer(serializers.ModelSerializer):
             }
         }
 
-    def get_token(self, obj):
-        # Génère un token pour l'utilisateur après l'inscription
-        token, created = Token.objects.get_or_create(user=obj)
-        return token.key
-
     def create(self, validated_data):
-        # Crée un nouvel utilisateur avec un mot de passe haché
-        user = Student.objects.create_user(
+        user = Student.objects.create(
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
-            password=validated_data['password'],
             email=validated_data['email'],
-            role=validated_data['role']
+            role=RoleEnum.STUDENT.name
         )
+        user.set_password(validated_data['password'])  # Hache le mot de passe
+        user.save()
+        
         return user
