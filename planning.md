@@ -335,3 +335,16 @@ Pour la mise en place de la plateforme intelligente d'évaluation automatisée d
 | **API Gateway & Documentation Service** | Gestion de l'API Gateway, documentation des API                 |
 
 ---
+
+
+### **Calendrier de Mise en œuvre (Exemple sur 4 semaines)**
+
+| **Phase**                            | **Durée estimée**  | **Activités principales**                             |
+|--------------------------------------|--------------------|-------------------------------------------------------|
+| **1. Préparation et planification**  | 1 semaine          | Définir les objectifs et les méthodes de détection                      |
+| **2. Intégration avec Ollamo**       | 1 semaine          | Analyse sémantique et génération de scores de similarité |
+| **3. Intégration Backend (Django)**  | 1 semaine          | Gestion des résultats et alertes de plagiat           |
+| **4. Interface Frontend**            | 1 semaine          | Interface de validation du plagiat pour les professeurs |
+| **5. Tests et validation et déploiement**           | 1 semaine          | Test de l'intégration complète puis déploiement |
+
+---
