@@ -1,4 +1,4 @@
-### **Plan de Travail pour l'Intégration de DeepSeek et Ollamo dans un Projet**
+### **Plan de Travail pour l'Intégration de DeepSeek via Ollamo dans un Projet**
 
 ---
 
@@ -21,94 +21,74 @@ Comprendre les objectifs du projet, choisir les bons modèles préexistants (Dee
 
 ---
 
-#### **2. Intégration avec DeepSeek**
-
-**Objectif :**  
-Mettre en place le modèle DeepSeek pour extraire des informations pertinentes ou effectuer des recherches sémantiques.
-
-- **2.1 Mise en place de DeepSeek :**
-  - Intégrer DeepSeek dans votre backend (Django, Flask, etc.).
-  - Configurer DeepSeek pour qu’il fonctionne selon les besoins spécifiques du projet (par exemple, rechercher du texte, extraire des entités, etc.).
-
-- **2.2 Traitement des données :**
-  - Utiliser DeepSeek pour analyser les documents collectés et extraire les informations pertinentes.
-  - Configurer DeepSeek pour traiter des documents PDF ou des textes extraits (en utilisant des outils comme PyMuPDF, pdfplumber, ou autres).
-
-- **2.3 Tests de l'intégration de DeepSeek :**
-  - Tester les capacités de recherche et d'extraction de DeepSeek avec des jeux de données réels.
-  - Vérifier la pertinence et la précision des résultats extraits (entités, données spécifiques).
-
----
-
-#### **3. Intégration de la Détection de Plagiat**
+#### **2. Intégration de la Détection de Plagiat**
 
 **Objectif :**  
 Mettre en place un système pour détecter le plagiat dans les documents soumis.
 
-- **3.1 Définir l'objectif de la détection de plagiat :**
+- **2.1 Définir l'objectif de la détection de plagiat :**
   - Détecter les similarités textuelles entre les exercices des étudiants et d'autres sources disponibles (exercices précédents, internet, ou bases de données spécifiques).
   - L'objectif est de repérer les parties copiées ou légèrement modifiées d’un texte original.
 
-- **3.2 Choisir la méthode de détection de plagiat :**
+- **2.2 Choisir la méthode de détection de plagiat :**
   - Utiliser des **algorithmes de similarité textuelle** tels que :
     - **Cosine Similarity** (mesure de la similarité entre deux textes en fonction de leur vecteur de mots).
     - **Jaccard Similarity** (mesure de similarité en comparant l'ensemble des mots-clés).
     - **Détection par n-grams** (détection de correspondances sur des séquences de mots).
 
-- **3.3 Identifier des sources de données pour la comparaison de plagiat :**
+- **2.3 Identifier des sources de données pour la comparaison de plagiat :**
   - Utiliser des bases de données internes (par exemple, exercices déjà soumis dans le système).
   - Si nécessaire, accéder à des bases de données externes (comme des articles en ligne ou des archives d'exercices) via des API publiques ou des outils d'exploration de texte.
 
 ---
 
-#### **4. Intégration avec Ollamo**
+#### **3. Intégration avec Ollamo**
 
 **Objectif :**  
 Envoyer les données extraites (par exemple, des exercices ou des réponses d'étudiants) à l'API Ollamo pour générer des corrections ou des analyses.
 
-- **4.1 Connexion à l'API Ollamo :**
+- **3.1 Connexion à l'API Ollamo :**
   - Configurer l'API Ollamo en fonction de vos besoins (par exemple, correction de texte, analyse de réponses, etc.).
   - Implémenter un mécanisme pour envoyer des requêtes à l'API Ollamo avec les données extraites par DeepSeek.
 
-- **4.2 Envoi des données à Ollamo :**
+- **3.2 Envoi des données à Ollamo :**
   - Préparer les données (par exemple, exercices d’élèves ou réponses) au format attendu par Ollamo (JSON, XML, etc.).
   - Implémenter la logique pour envoyer ces données à l'API Ollamo et récupérer les corrections ou les résultats d’analyse.
 
-- **4.3 Traitement des réponses d'Ollamo :**
+- **3.3 Traitement des réponses d'Ollamo :**
   - Analyser les réponses obtenues de l'API Ollamo (corrections, suggestions, commentaires).
   - Stocker les réponses générées (par exemple, corrections des exercices) dans la base de données pour qu’elles soient accessibles aux professeurs et aux étudiants.
 
-- **4.4 Tests de l'intégration avec Ollamo :**
+- **3.4 Tests de l'intégration avec Ollamo :**
   - Tester l'API Ollamo avec des exemples d'exercices ou de réponses.
   - Vérifier la précision des corrections et ajuster la logique si nécessaire (par exemple, gestion des erreurs API, formatage des données envoyées).
 
 ---
 
-#### **5. Tests d'intégration et Validation**
+#### **4. Tests d'intégration et Validation**
 
 **Objectif :**  
 Valider le flux complet du système, de l’upload du fichier PDF à l'affichage de la correction finale.
 
-- **5.1 Tests unitaires :**
+- **4.1 Tests unitaires :**
   - Tester chaque composant séparément (DeepSeek, Ollamo, API, backend Django, frontend).
 
-- **5.2 Tests d'intégration :**
+- **4.2 Tests d'intégration :**
   - Tester l’intégration complète du système pour vérifier que les fichiers sont correctement traités, que les données sont envoyées et reçues correctement entre les différents composants (DeepSeek, Ollamo, Django).
 
-- **5.3 Test de performance et scalabilité :**
+- **4.3 Test de performance et scalabilité :**
   - Tester la capacité du système à gérer un grand nombre de fichiers PDF et à envoyer plusieurs requêtes à l'API Ollamo en même temps.
 
 ---
 
-#### **6. Maintenance et Amélioration**
+#### **5. Maintenance et Amélioration**
 
 **Objectif :**  
 Maintenir et améliorer les fonctionnalités du système au fil du temps.
 
-- **6.1 Surveillance continue :**
+- **5.1 Surveillance continue :**
   - Mettre en place un système de surveillance pour suivre la performance du système en production.
 
-- **6.2 Itérations et améliorations :**
+- **5.2 Itérations et améliorations :**
   - En fonction des retours des utilisateurs (professeurs, étudiants), itérer et améliorer le système (ajuster l'intégration d'Ollamo, affiner les résultats de DeepSeek, etc.).
-
 ---
