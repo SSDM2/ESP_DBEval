@@ -4,7 +4,7 @@ from rest_framework import serializers, validators
 from django.contrib.auth.password_validation import validate_password
 from rest_framework_simplejwt.tokens import RefreshToken
 
-class GetProfessorSerializer(serializers.ModelSerializer):
+class ProfessorSerializer(serializers.ModelSerializer):
     role = serializers.CharField(source='get_role_display')
     # role = serializers.ChoiceField(choices=Professor.role.choices)
     class Meta:
