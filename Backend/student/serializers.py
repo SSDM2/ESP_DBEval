@@ -1,3 +1,4 @@
+from classroom.serializers import ClassroomStudentSerializer
 from user.models import RoleEnum
 from .models import Student
 from rest_framework import serializers, validators
@@ -6,13 +7,13 @@ from rest_framework_simplejwt.tokens import RefreshToken
       
 class StudentSerializer(serializers.ModelSerializer):
     role = serializers.CharField(source='get_role_display')
-    classroom = serializers.SerializerMethodField()
+    classroom = ClassroomStudentSerializer()
     class Meta:
         model = Student
         fields = ['uuid', 'last_name', 'role', 'first_name', 'email', 'classroom', 'created_at','updated_at']
         
     def get_classroom(self, obj):
-        return obj.classroom.name if obj.classroom else None
+        return obj.classroom if obj.classroom else None
         
 
 class RegisterStudentSerializer(serializers.ModelSerializer):

@@ -8,5 +8,5 @@ router.register(r'professor', ProfessorViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('professor/create/', RegisterView.as_view(), name="add_professor"),
+    path('prof/add/', RegisterView.as_view(), name="add_professor"),
 ]
