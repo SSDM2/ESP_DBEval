@@ -1,7 +1,7 @@
 export default function ResponsiveImage() {
   return (
     <div className="relative">
-      <div className="overflow-hidden">
+      <div className="overflow-hidden h-40">
         <img
           src="/images/grid-image/image-01.png"
           alt="Cover"

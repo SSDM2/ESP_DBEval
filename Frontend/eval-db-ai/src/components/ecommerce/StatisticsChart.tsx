@@ -9,7 +9,7 @@ export default function StatisticsChart() {
       position: "top",
       horizontalAlign: "left",
     },
-    colors: ["#465FFF", "#9CB9FF"], // Define line colors
+    colors: ["#00bf63", "#ff0000"], // Define line colors
     chart: {
       fontFamily: "Outfit, sans-serif",
       height: 310,
@@ -103,11 +103,11 @@ export default function StatisticsChart() {
 
   const series = [
     {
-      name: "Sales",
+      name: "Reussies",
       data: [180, 190, 170, 160, 175, 165, 170, 205, 230, 210, 240, 235],
     },
     {
-      name: "Revenue",
+      name: "Echoues",
       data: [40, 30, 50, 40, 55, 40, 70, 100, 110, 120, 150, 140],
     },
   ];
@@ -115,11 +115,11 @@ export default function StatisticsChart() {
     <div className="rounded-2xl border border-gray-200 bg-white px-5 pb-5 pt-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
       <div className="flex flex-col gap-5 mb-6 sm:flex-row sm:justify-between">
         <div className="w-full">
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            Statistics
+          <h3 className="text-lg font-semibold text-blue-800 dark:text-white/90">
+            Statistiques
           </h3>
           <p className="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
-            Target you’ve set for each month
+            Performances des Etudiants
           </p>
         </div>
         <div className="flex items-start w-full gap-3 sm:justify-end">

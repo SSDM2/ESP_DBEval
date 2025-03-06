@@ -6,7 +6,7 @@ import MultiSelect from "../MultiSelect";
 
 export default function SelectInputs() {
   const options = [
-    { value: "marketing", label: "Marketing" },
+    { value: "QCM", label: "Question a choix multiple" },
     { value: "template", label: "Template" },
     { value: "development", label: "Development" },
   ];

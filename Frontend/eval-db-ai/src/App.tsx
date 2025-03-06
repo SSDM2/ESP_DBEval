@@ -18,6 +18,10 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import Exercice from "./pages/Exercices/Exercice";
+import Soumission from "./pages/Exercices/Soumission";
+import Correction from "./pages/Exercices/Correction";
+import Note from "./pages/Exercices/Note";
 
 export default function App() {
   return (
@@ -28,6 +32,13 @@ export default function App() {
           {/* Dashboard Layout */}
           <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
+
+            {/* Classes */}
+            <Route path="/exercices" element={<Exercice />} />
+            <Route path="/soumissions" element={<Soumission />} />
+            <Route path="/corrections" element={<Correction />} />
+            <Route path="/profile" element={<UserProfiles />} />
+            <Route path="/notes" element={<Note />} />
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
