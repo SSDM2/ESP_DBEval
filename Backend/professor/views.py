@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 @permission_classes([IsAuthenticated])
 class ProfessorViewSet(viewsets.ModelViewSet):
     queryset = Professor.objects.all()
-    serializer_class = GetProfessorSerializer
+    serializer_class = ProfessorSerializer
     lookup_field = 'uuid'
     
     def create(self, request, *args, **kwargs):
