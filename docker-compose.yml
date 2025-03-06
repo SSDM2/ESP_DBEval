@@ -32,7 +32,7 @@ services:
     build:
       context: ./Backend
       dockerfile: Dockerfile
-    command: python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
     ports:
@@ -40,6 +40,11 @@ services:
     depends_on:
       - mysql
       - minio
+    environment:
+      - DB_HOST=mysql
+      - DB_NAME=mydb
+      - DB_USER=user
+      - DB_PASSWORD=userpassword
     networks:
       - app_network
 
