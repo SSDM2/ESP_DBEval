@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 class RoleEnum(Enum):
     PROFESSOR = 'Professor'
     STUDENT = 'Student'
-    ADMIN = ''
+    ADMIN = 'Admin'
 
 class CustomAccountManager(BaseUserManager):
     def create_superuser(self, email, first_name, last_name, password, **other_fields):
@@ -25,7 +25,7 @@ class CustomAccountManager(BaseUserManager):
 
         return self.create_user(email, first_name, last_name, password, **other_fields)
 
-    def create_user(self, email, first_name, last_name, password, role='', **other_fields):
+    def create_user(self, email, first_name, last_name, password, role=RoleEnum.ADMIN, **other_fields):
         if role:
             if role not in [role.name for role in RoleEnum]:
                 raise ValueError('Role must be either Professor or Student.')
@@ -40,7 +40,7 @@ class CustomAccountManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     objects         =   CustomAccountManager()
     email           =   models.EmailField(_('email address'), unique=True)
-    uuid            =   models.UUIDField(default=uuid.uuid4,unique=True, editable=False)
+    uuid            =   models.UUIDField(default=uuid.uuid4,unique=True, editable=False, db_index=True)
     last_name       =   models.CharField(max_length=150, null=False, blank=False)
     first_name      =   models.CharField(max_length=150, blank=True)
     role = models.CharField(

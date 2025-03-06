@@ -1,17 +1,19 @@
-from professor.models import Professor
+from classroom.serializers import ClassroomStudentSerializer
 from user.models import RoleEnum
 from .models import Student
 from rest_framework import serializers, validators
 from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
       
-class GetStudentSerializer(serializers.ModelSerializer):
+class StudentSerializer(serializers.ModelSerializer):
     role = serializers.CharField(source='get_role_display')
-    # role = serializers.ChoiceField(choices=Student.role.choices)
+    classroom = ClassroomStudentSerializer()
     class Meta:
         model = Student
-        fields = ['uuid', 'last_name', 'role', 'first_name', 'email','created_at','updated_at']
+        fields = ['uuid', 'last_name', 'role', 'first_name', 'email', 'classroom', 'created_at','updated_at']
+        
+    def get_classroom(self, obj):
+        return obj.classroom if obj.classroom else None
         
 
 class RegisterStudentSerializer(serializers.ModelSerializer):

@@ -18,3 +18,16 @@ class Student(User):
         managed = True
         verbose_name = 'Student'
         verbose_name_plural = 'Students'
+
+    @property
+    def classroom(self):
+        """
+        Renvoie la classe à laquelle l'étudiant appartient.
+        """
+        return self.student_classroom.first()
+
+    def assign_to_classroom(self, classroom):
+        """
+        Assigne l'étudiant à une classe.
+        """
+        self.student_classroom.set([classroom])

@@ -21,3 +21,10 @@ class Professor(User):
         managed = True
         verbose_name = 'Professor'
         verbose_name_plural = 'Professors'
+        
+    @property
+    def classrooms(self):
+        """
+        Renvoie les classes enseignées par ce professeur.
+        """
+        return self.taught_classrooms.all()

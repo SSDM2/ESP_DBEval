@@ -1,3 +1,4 @@
+from datetime import datetime
 from .models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -20,7 +21,9 @@ class LoginView(APIView):
         serializer = LoginSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             user = serializer.validated_data['user']
-            
+            # req = User.objects.get(uuid=user.uuid)
+            user.last_login = datetime.today()
+            user.save()
             # Générer les tokens JWT
             refresh = RefreshToken.for_user(user)
             
