@@ -7,7 +7,7 @@ import {
 } from "../../ui/table";
 
 import Badge from "../../ui/badge/Badge";
-import { BoxIcon, EyeCloseIcon, EyeIcon, FileIcon } from "../../../icons";
+import { FileIcon } from "../../../icons";
 
 interface Soumission {
   id: number; // Unique identifier for each Soumission

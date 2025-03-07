@@ -1,18 +1,7 @@
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
-import DefaultInputs from "../../components/form/form-elements/DefaultInputs";
-import InputGroup from "../../components/form/form-elements/InputGroup";
-import DropzoneComponent from "../../components/form/form-elements/DropZone";
-import CheckboxComponents from "../../components/form/form-elements/CheckboxComponents";
-import RadioButtons from "../../components/form/form-elements/RadioButtons";
-import ToggleSwitch from "../../components/form/form-elements/ToggleSwitch";
-import FileInputExample from "../../components/form/form-elements/FileInputExample";
-import SelectInputs from "../../components/form/form-elements/SelectInputs";
-import TextAreaInput from "../../components/form/form-elements/TextAreaInput";
-import InputStates from "../../components/form/form-elements/InputStates";
+
 import PageMeta from "../../components/common/PageMeta";
-import EtudiantList from "../../components/tables/BasicTables/ExercicestList";
-import { BoxIcon, GroupIcon } from "../../icons";
-import Button from "../../components/ui/button/Button";
+import {  GroupIcon } from "../../icons";
 import SoumissionInputs from "../../components/form/Exercices/SoumissionInputs";
 import SoumissionFile from "../../components/form/form-elements/SoumissionFile";
 import SoumissionstList from "../../components/tables/BasicTables/SoumissionstList";

@@ -7,7 +7,7 @@ import {
 } from "../../ui/table";
 
 import Badge from "../../ui/badge/Badge";
-import { BoltIcon, BoxIconLine, CheckCircleIcon, CloseIcon, FileIcon, InfoIcon, MoreDotIcon, PencilIcon, PlusIcon, TrashBinIcon } from "../../../icons";
+import {FileIcon,  MoreDotIcon, PencilIcon,  TrashBinIcon } from "../../../icons";
 import { Dropdown } from "../../ui/dropdown/Dropdown";
 import { DropdownItem } from "../../ui/dropdown/DropdownItem";
 import { useState } from "react";

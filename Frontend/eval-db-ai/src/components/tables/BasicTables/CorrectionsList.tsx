@@ -7,7 +7,7 @@ import {
 } from "../../ui/table";
 
 import Badge from "../../ui/badge/Badge";
-import { AngleUpIcon, CheckCircleIcon, CopyIcon, DocsIcon, FileIcon, MoreDotIcon, PlusIcon, TaskIcon, TrashBinIcon } from "../../../icons";
+import {  CheckCircleIcon, FileIcon, MoreDotIcon, TrashBinIcon } from "../../../icons";
 import { Dropdown } from "../../ui/dropdown/Dropdown";
 import { DropdownItem } from "../../ui/dropdown/DropdownItem";
 import { useState } from "react";

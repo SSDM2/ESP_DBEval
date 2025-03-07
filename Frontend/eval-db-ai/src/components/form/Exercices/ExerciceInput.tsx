@@ -3,7 +3,7 @@ import ComponentCard from "../../common/ComponentCard";
 import Label from "../Label";
 import Input from "../input/InputField";
 import Select from "../Select";
-import { CalenderIcon, EyeCloseIcon, EyeIcon, TimeIcon } from "../../../icons";
+import { CalenderIcon } from "../../../icons";
 import TextArea from "../input/TextArea";
 
 export default function ExerciceInputs() {
