@@ -1,7 +1,5 @@
 # serializers.py
-
-from classroom.serializers import ClassroomSerializer
-from professor.serializers import ProfessorSerializer
+from django.conf import settings
 from classroom.models import Classroom
 from professor.models import Professor
 from rest_framework import serializers
@@ -15,11 +13,13 @@ class ExerciseSerializer(serializers.ModelSerializer):
         model = Exercise
         fields = ['uuid', 'title', 'description', 'pdf', 'sender', 'classroom', 'deadline', 'created_at', 'updated_at']
 
-    def validate_pdf(self, value):
-        return value
+    # def validate_pdf(self, value):
+    #     return value
     
-    def get_pdf(self, obj):
-        return obj.pdf.url if obj.pdf else None
+    # def get_pdf(self, obj):
+    #     if obj.pdf:
+    #         return f"{settings.AWS_S3_ENDPOINT_URL}/{settings.AWS_STORAGE_BUCKET_NAME}/{obj.pdf}"
+
     
     # def create(self, validated_data):
     #     sender = self.context['request'].user

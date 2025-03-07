@@ -1,3 +1,6 @@
+
+
+
 """
 Django settings for config project.
 
@@ -137,6 +140,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# cors headers config
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -172,7 +178,7 @@ AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # clé d'accès MinIO
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # clé secrète MinIO
 AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')  # Nom du bucket MinIO
 AWS_S3_ENDPOINT_URL = os.getenv('AWS_S3_ENDPOINT_URL')  # URL de MinIO (ex. http://localhost:9000)
-MINIO_ACCESS_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}'
+# MINIO_ACCESS_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}'
 
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
@@ -180,6 +186,5 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_S3_USE_SSL = False  # Désactivez SSL si vous utilisez HTTP
 AWS_LOCATION = 'exercises'  # Dossier où les fichiers seront stockés dans MinIO
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 AWS_DEFAULT_ACL = None  # Aucun ACL par défaut (accès privé)
+

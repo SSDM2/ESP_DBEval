@@ -19,11 +19,12 @@ class Exercise(models.Model):
     classroom       =   models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name='all_exercises')  # Relie l'exercice à une classe
     sender          =   models.ForeignKey(Professor, on_delete=models.DO_NOTHING, related_name='created_exercises', limit_choices_to={'role': RoleEnum.PROFESSOR.name}, blank=True)  # Le professeur qui crée l'exercice
     deadline        =   models.DateTimeField(null=False)  # Date limite pour rendre l'exercice
-    pdf             =   models.FileField(upload_to='exercises/%Y/%m/%d/', null=False,
-                        validators=[
-                        FileExtensionValidator(allowed_extensions=['pdf']),
-                        validate_pdf_size 
-                    ])
+    # pdf             =   models.FileField(upload_to='exercises/%Y/%m/%d/', null=False,
+    #                     validators=[
+    #                     FileExtensionValidator(allowed_extensions=['pdf']),
+    #                     validate_pdf_size 
+    #                 ])
+    pdf             =   models.CharField(max_length=255, null=True, blank=True)
     created_at      =   models.DateTimeField(auto_now_add=True) 
     updated_at      =   models.DateTimeField(auto_now=True)    
 
