@@ -28,3 +28,10 @@ class Professor(User):
         Renvoie les classes enseignées par ce professeur.
         """
         return self.taught_classrooms.all()
+    
+    @property
+    def exercises(self):
+        """
+        Renvoie les les exercices créés par ce professeur.
+        """
+        return self.created_exercises.all()

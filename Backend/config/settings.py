@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -44,7 +45,8 @@ INSTALLED_APPS = [
     'professor',
     'student',
     'drf_yasg',
-    'classroom'
+    'classroom',
+    'exercise',
 ]
 
 MIDDLEWARE = [
@@ -151,7 +153,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = "blogs.storage.StaticS3Boto3Storage"
+
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = "blogs.storage.S3MediaStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -159,3 +166,20 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'  # Remplacez 'user' par le nom de votre application
+
+# Configuration de MinIO comme stockage S3
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # clé d'accès MinIO
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # clé secrète MinIO
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')  # Nom du bucket MinIO
+AWS_S3_ENDPOINT_URL = os.getenv('AWS_S3_ENDPOINT_URL')  # URL de MinIO (ex. http://localhost:9000)
+MINIO_ACCESS_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}'
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_S3_USE_SSL = False  # Désactivez SSL si vous utilisez HTTP
+AWS_LOCATION = 'exercises'  # Dossier où les fichiers seront stockés dans MinIO
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_DEFAULT_ACL = None  # Aucun ACL par défaut (accès privé)

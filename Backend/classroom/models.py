@@ -16,3 +16,10 @@ class Classroom(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def exercises(self):
+        """
+        Renvoie les exercises d'une classe.
+        """
+        return self.all_exercises.all()
