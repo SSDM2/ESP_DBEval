@@ -1,15 +1,15 @@
-asgiref==3.8.1
-Django==4.2.19 
+asgiref==3.7.2
+Django==4.2.10
 mysqlclient==2.1.1  # Pilote MySQL pour Django
-django-filter==25.1
-djangorestframework==3.15.2
-djangorestframework_simplejwt==5.5.0
-drf-yasg==1.21.9
+django-filter==23.5
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.1
+drf-yasg==1.21.7
 inflection==0.5.1
-Markdown==3.7
-packaging==24.2
-PyJWT==2.9.0
-pytz==2025.1
-PyYAML==6.0.2
-sqlparse==0.5.3
+Markdown==3.5.2
+packaging==23.2
+PyJWT==2.8.0
+pytz==2024.1
+PyYAML==6.0.1
+sqlparse==0.4.4
 uritemplate==4.1.1

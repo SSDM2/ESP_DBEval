@@ -123,7 +123,7 @@ DATABASES = {
         'NAME': os.environ.get('MYSQL_DATABASE', 'mydb'),  # Nom de la base de données
         'USER': os.environ.get('MYSQL_USER', 'user'),      # Nom d'utilisateur
         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'userpassword'),  # Mot de passe
-        'HOST': os.environ.get('DB_HOST', 'mysql'),        # Nom du service dans docker-compose.yml
+        'HOST': os.environ.get('DB_HOST', 'localhost'),    # Using localhost for local development
         'PORT': os.environ.get('DB_PORT', '3306'),         # Port MySQL
         'OPTIONS': {
             'charset': 'utf8mb4',  # Pour supporter les caractères spéciaux
