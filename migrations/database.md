@@ -1,23 +1,23 @@
-**structure des tables** pour la base de données :
-
 ### 1. **Table `users`** (pour gérer les comptes utilisateurs)
-
-Cette table gère les informations des utilisateurs (professeurs et étudiants).
+Cette table gère les informations des utilisateurs (professeurs, étudiants).
 
 ```sql
 CREATE TABLE users (
-    user_id SERIAL PRIMARY KEY,           -- Identifiant unique de l'utilisateur
-    username VARCHAR(100) NOT NULL,       -- Nom d'utilisateur unique
-    email VARCHAR(255) UNIQUE NOT NULL,   -- Email unique de l'utilisateur
-    password_hash VARCHAR(255) NOT NULL,  -- Mot de passe haché
-    role VARCHAR(50) NOT NULL,            -- Rôle de l'utilisateur (professeur, étudiant)
-    created_at TIMESTAMP DEFAULT NOW(),   -- Date de création du compte
-    updated_at TIMESTAMP DEFAULT NOW()    -- Date de la dernière mise à jour
+    user_id SERIAL PRIMARY KEY,               -- Identifiant unique de l'utilisateur
+    username VARCHAR(100) NOT NULL,           -- Nom d'utilisateur unique
+    email VARCHAR(255) UNIQUE NOT NULL,       -- Email unique de l'utilisateur
+    password_hash VARCHAR(255),               -- Mot de passe haché (peut être nul si Google auth)
+    google_id VARCHAR(255) UNIQUE,            -- Identifiant unique de l'utilisateur Google
+    google_token VARCHAR(255),                -- Jeton d'accès Google (si nécessaire)
+    role VARCHAR(50) NOT NULL,                -- Rôle de l'utilisateur (professeur, étudiant)
+    created_at TIMESTAMP DEFAULT NOW(),       -- Date de création du compte
+    updated_at TIMESTAMP DEFAULT NOW(),       -- Date de la dernière mise à jour
+    last_login TIMESTAMP,                     -- Dernière connexion de l'utilisateur
+    status VARCHAR(50) DEFAULT 'active'       -- Statut de l'utilisateur (ex: actif, suspendu)
 );
 ```
 
 ### 2. **Table `exercises`** (pour gérer les exercices soumis par les professeurs)
-
 Cette table stocke les exercices (questions, consignes, etc.) créés par les professeurs.
 
 ```sql
@@ -27,13 +27,14 @@ CREATE TABLE exercises (
     description TEXT NOT NULL,                 -- Description ou consigne de l'exercice
     file_url VARCHAR(255),                     -- URL du fichier d'exercice (si applicable)
     created_by INT REFERENCES users(user_id), -- Professeur qui a créé l'exercice
+    correction_file_url VARCHAR(255),          -- URL du fichier de correction généré par l'IA
+    correction_available_at TIMESTAMP,        -- Date et heure de disponibilité de la correction
     created_at TIMESTAMP DEFAULT NOW(),       -- Date de création de l'exercice
     updated_at TIMESTAMP DEFAULT NOW()        -- Date de la dernière mise à jour
 );
 ```
 
 ### 3. **Table `submissions`** (pour gérer les soumissions des étudiants)
-
 Cette table garde trace des soumissions des étudiants, avec les fichiers PDF soumis.
 
 ```sql
@@ -45,13 +46,15 @@ CREATE TABLE submissions (
     submitted_at TIMESTAMP DEFAULT NOW(),      -- Date de soumission
     grade DECIMAL(5,2),                        -- Note attribuée par l'IA
     feedback TEXT,                             -- Feedback généré par l'IA
+    errors_detected TEXT[],                    -- Liste des erreurs détectées dans la soumission
+    recommendations TEXT[],                    -- Liste des recommandations pour l'étudiant
+    missing_elements TEXT[],                   -- Liste des éléments manquants dans la soumission
     ai_corrected BOOLEAN DEFAULT FALSE,        -- Si l'exercice a été corrigé par l'IA
     corrected_at TIMESTAMP                     -- Date de correction par l'IA
 );
 ```
 
 ### 4. **Table `corrections`** (pour enregistrer les corrections et la comparaison)
-
 Cette table contient des informations détaillées sur la correction générée par l'IA pour chaque soumission.
 
 ```sql
@@ -62,13 +65,15 @@ CREATE TABLE corrections (
     score DECIMAL(5,2),                           -- Score final attribué à l'exercice
     errors_detected TEXT[],                       -- Liste des erreurs détectées dans la soumission
     recommendations TEXT[],                       -- Liste des recommandations pour l'étudiant
+    missing_elements TEXT[],                      -- Liste des éléments manquants dans la soumission
+    correction_file_url VARCHAR(255),             -- URL vers le fichier de correction généré par l'IA
+    correction_available_at TIMESTAMP,           -- Date et heure de disponibilité de la correction
     created_at TIMESTAMP DEFAULT NOW(),          -- Date de création de la correction
     updated_at TIMESTAMP DEFAULT NOW()           -- Date de la dernière mise à jour
 );
 ```
 
 ### 5. **Table `performances`** (pour stocker les statistiques de performance des étudiants)
-
 Cette table stocke les performances globales des étudiants (notes, tendances, etc.).
 
 ```sql
@@ -80,14 +85,14 @@ CREATE TABLE performances (
     last_submission_date TIMESTAMP,            -- Dernière soumission effectuée
     grade_history TEXT[],                      -- Historique des notes (JSON ou tableau de notes)
     progress_score DECIMAL(5,2),               -- Score de progression des compétences
+    suggestions TEXT[],                        -- Suggestions de cours ou de ressources basées sur les performances
     created_at TIMESTAMP DEFAULT NOW(),        -- Date de création de la performance
     updated_at TIMESTAMP DEFAULT NOW()         -- Date de mise à jour de la performance
 );
 ```
 
 ### 6. **Table `roles`** (pour mieux gérer les rôles des utilisateurs, si nécessaire)
-
-Si vous souhaitez gérer les rôles de manière plus détaillée, vous pouvez créer une table `roles`. Cette table vous permet de gérer les droits d'accès et la hiérarchie des utilisateurs.
+Si vous souhaitez gérer les rôles de manière plus détaillée, vous pouvez créer une table `roles`.
 
 ```sql
 CREATE TABLE roles (
@@ -98,7 +103,6 @@ CREATE TABLE roles (
 ```
 
 ### 7. **Table `audit_logs`** (pour gérer les journaux d'audit)
-
 Cette table peut être utile pour garder une trace de toute modification importante (par exemple, modifications des exercices, soumissions, corrections, etc.).
 
 ```sql
@@ -115,19 +119,20 @@ CREATE TABLE audit_logs (
 
 ### **Relations entre les tables :**
 
-- **`users`** : Les utilisateurs (professeurs et étudiants) sont gérés dans cette table. Chaque utilisateur peut avoir un rôle, comme professeur ou étudiant.
+- **`users`** : Gère les utilisateurs, qui peuvent être des professeurs ou des étudiants.
 - **`exercises`** : Les exercices sont créés par les professeurs et sont associés à un **`user_id`** (professeur).
-- **`submissions`** : Les étudiants soumettent des fichiers PDF pour un exercice donné. Chaque soumission est associée à un étudiant et un exercice.
-- **`corrections`** : Chaque soumission est corrigée par l'IA, et la correction génère un **feedback** et une **note**.
-- **`performances`** : Cette table enregistre les statistiques de performance des étudiants, telles que la moyenne des notes et l'historique de leurs soumissions.
+- **`submissions`** : Les étudiants soumettent des fichiers PDF pour chaque exercice. Chaque soumission est associée à un étudiant et un exercice.
+- **`corrections`** : Chaque soumission peut être corrigée par l'IA. La correction est associée à un **`submission_id`**.
+- **`performances`** : Cette table suit les performances des étudiants, en enregistrant leurs soumissions et notes globales, ainsi que les suggestions basées sur leur progression.
+- **`roles`** : Permet de gérer les rôles des utilisateurs (par exemple, professeur, étudiant) et leurs permissions.
+- **`audit_logs`** : Permet de suivre les actions effectuées par les utilisateurs dans le système, telles que la création, la modification, ou la suppression d'exercices ou de soumissions.
 
 ---
 
-### **Exemple de flux de travail avec la base de données :**
+### Exemple de flux de travail avec la base de données :
 
 1. **Création d'un exercice** : Le professeur crée un exercice via l'interface, et l'exercice est stocké dans la table `exercises`.
 2. **Soumission de l'étudiant** : L'étudiant soumet son fichier PDF pour l'exercice. Cette soumission est enregistrée dans la table `submissions`.
-3. **Correction automatique** : L'IA génère une correction basée sur la soumission et les exercices définis. Les informations sont enregistrées dans la table `corrections`.
-4. **Suivi de la performance** : Les performances des étudiants sont suivies dans la table `performances`, et les statistiques sont mises à jour à chaque nouvelle soumission ou correction.
-
----
+3. **Correction automatique** : L'IA génère une correction pour l'exercice, en incluant des manquements, des erreurs, des suggestions, etc. Les informations sont enregistrées dans la table `corrections`.
+4. **Consultation de la correction** : L'étudiant peut consulter la correction à la date et heure spécifiées dans le champ `correction_available_at` de la table `corrections`.
+5. **Suivi de la performance** : Les performances des étudiants sont suivies dans la table `performances`, et les suggestions sont générées en fonction de leurs résultats.
