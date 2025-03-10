@@ -35,3 +35,4 @@ EXPOSE 8000
 
 # Étape 7 : Lancer les migrations et démarrer le serveur Django
 CMD ["bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+

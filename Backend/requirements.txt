@@ -26,3 +26,4 @@ sqlparse==0.5.3
 typing_extensions==4.12.2
 uritemplate==4.1.1
 urllib3==2.3.0
+mysqlclient==2.1.1

@@ -16,6 +16,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -114,10 +115,25 @@ SIMPLE_JWT = {
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+## Modification de la configuration de la base de données pour utiliser MySQL au lieu de SQLite.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE', 'mydb'),  # Nom de la base de données
+        'USER': os.environ.get('MYSQL_USER', 'user'),      # Nom d'utilisateur
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'userpassword'),  # Mot de passe
+        'HOST': os.environ.get('DB_HOST', 'localhost'),    # Using localhost for local development
+        'PORT': os.environ.get('DB_PORT', '3306'),         # Port MySQL
+        'OPTIONS': {
+            'charset': 'utf8mb4',  # Pour supporter les caractères spéciaux
+        },
     }
 }
 
