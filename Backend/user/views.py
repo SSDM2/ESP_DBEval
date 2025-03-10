@@ -21,7 +21,6 @@ class LoginView(APIView):
         serializer = LoginSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             user = serializer.validated_data['user']
-            # req = User.objects.get(uuid=user.uuid)
             user.last_login = datetime.today()
             user.save()
             # Générer les tokens JWT

@@ -1,3 +1,4 @@
+from classroom.models import Classroom
 from classroom.serializers import ClassroomStudentSerializer
 from user.models import RoleEnum
 from .models import Student
@@ -14,7 +15,13 @@ class StudentSerializer(serializers.ModelSerializer):
         
     def get_classroom(self, obj):
         return obj.classroom if obj.classroom else None
-        
+
+class StudentBasicSerializer(serializers.ModelSerializer):
+    role = serializers.CharField(source='get_role_display')
+    classroom =serializers.SlugRelatedField(queryset=Classroom.objects.all(), many=True, slug_field='uuid' )
+    class Meta:
+        model = Student
+        fields = ['uuid', 'last_name', 'role', 'first_name', 'email', 'classroom', 'created_at','updated_at']        
 
 class RegisterStudentSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])

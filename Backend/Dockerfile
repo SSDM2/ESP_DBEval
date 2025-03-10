@@ -1,43 +1,38 @@
-# Utilisation d'une image GDAL comme base
-FROM osgeo/gdal:ubuntu-full-3.4.1
+# Étape 1 : Utiliser une image de base officielle de Python
+FROM python:3.13.2-slim
 
-# Installation de Python et des dépendances système
-RUN apt-get update && apt-get install -y \
-    python3.9 \
-    python3.9-dev \
-    python3-pip \
-    default-libmysqlclient-dev \
-    build-essential \
-    python3-setuptools \
-    python3-wheel \
-    && rm -rf /var/lib/apt/lists/*
-
-# Créer un lien symbolique pour python3.9
-RUN ln -sf /usr/bin/python3.9 /usr/bin/python
-RUN ln -sf /usr/bin/pip3 /usr/bin/pip
-
-# Mettre à jour pip et installer les outils de build
-RUN python -m pip install --upgrade pip setuptools wheel
-
-# Configuration des variables d'environnement GDAL
-ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
-ENV C_INCLUDE_PATH=/usr/include/gdal
-ENV LIBRARY_PATH=/usr/lib
-ENV LD_LIBRARY_PATH=/usr/lib
-ENV GDAL_DATA=/usr/share/gdal
-ENV PYTHONPATH=/usr/lib/python3/dist-packages
-
-# Définition d'un répertoire de travail
+# Étape 2 : Définir un répertoire de travail
 WORKDIR /app
 
-# Copie du fichier de dépendances (requirements.txt)
+# Installer les dépendances système nécessaires pour GDAL
+RUN apt-get update && apt-get install -y \
+    binutils \
+    libproj-dev \
+    gdal-bin \
+    libgdal-dev \
+    # Autres dépendances qui pourraient être nécessaires
+    build-essential \
+    pkg-config \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Définir les variables d'environnement pour GDAL
+ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
+ENV C_INCLUDE_PATH=/usr/include/gdal
+
+# Étape 3 : Copier le fichier de dépendances (requirements.txt)
 COPY requirements.txt /app/
 
-# Installation des dépendances Python
+# Étape 4 : Installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Exposition du port sur lequel l'application Django va écouter
+# Étape 5 : Copier le reste des fichiers du projet dans le conteneur
+COPY . /app/
+
+# Étape 6 : Exposer le port sur lequel l'application Django va écouter (par défaut, 8000)
 EXPOSE 8000
 
-# Point d'entrée par défaut
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+# Étape 7 : Lancer les migrations et démarrer le serveur Django
+CMD ["bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+

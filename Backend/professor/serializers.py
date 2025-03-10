@@ -1,3 +1,4 @@
+from exercise.models import Exercise
 from classroom.models import Classroom
 from user.models import RoleEnum, User
 from professor.models import Professor
@@ -8,10 +9,10 @@ from rest_framework_simplejwt.tokens import RefreshToken
 class ProfessorSerializer(serializers.ModelSerializer):
     role = serializers.CharField(source='get_role_display')
     classrooms = serializers.SlugRelatedField(queryset=Classroom.objects.all(), many=True, slug_field='uuid')
-    # role = serializers.ChoiceField(choices=Professor.role.choices)
+    exercises = serializers.SlugRelatedField(queryset=Exercise.objects.all(), many=True, slug_field='uuid')
     class Meta:
         model = Professor
-        fields = ['uuid', 'last_name', 'role', 'first_name', 'classrooms', 'email','created_at','updated_at']
+        fields = ['uuid', 'last_name', 'role', 'first_name', 'classrooms', 'exercises', 'email','created_at','updated_at']
     
 class RegisterProfessorSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
