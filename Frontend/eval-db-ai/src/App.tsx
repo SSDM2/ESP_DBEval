@@ -18,13 +18,25 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-import Exercice from "./pages/Exercices/Exercice";
-import Soumission from "./pages/Exercices/Soumission";
-import Correction from "./pages/Exercices/Correction";
-import Note from "./pages/Exercices/Note";
+import Exercice from "./pages/prof/CreateExams";
+import Soumission from "./pages/prof/Soumission";
+import Correction from "./pages/prof/Correction";
+import Note from "./pages/prof/Note";
+import Users from "./pages/Users/Users";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import Exams from "./pages/prof/CreateExams";
+import CreateExams from "./pages/prof/CreateExams";
+import ViewExam from "./pages/prof/ViewExams";
+
+
 
 export default function App() {
+
+
+
+
   return (
+    <GoogleOAuthProvider clientId="227019902757-cucdb2o7vbc7mlbo2iredsamdhm7jjql.apps.googleusercontent.com">
     <>
       <Router>
         <ScrollToTop />
@@ -34,11 +46,24 @@ export default function App() {
             <Route index path="/" element={<Home />} />
 
             {/* Classes */}
-            <Route path="/exercices" element={<Exercice />} />
+            <Route path="/upload-exam" element={<CreateExams />} />
+            <Route path="/view-exams" element={<ViewExam/>} />
             <Route path="/soumissions" element={<Soumission />} />
             <Route path="/corrections" element={<Correction />} />
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/notes" element={<Note />} />
+            <Route path="/reclamations" element={<Note />} />
+            <Route path="/reclamations" element={<Note />} />
+
+            {/* professeur */}
+            <Route path="/notes" element={<Note />} />
+
+            {/* Gestion de compte */}
+            <Route path="/users" element={<Users />} />
+
+            {/* Performances */}
+            <Route path="/performances" element={<Users />} />
+
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
@@ -73,5 +98,6 @@ export default function App() {
         </Routes>
       </Router>
     </>
+ </GoogleOAuthProvider>
   );
 }

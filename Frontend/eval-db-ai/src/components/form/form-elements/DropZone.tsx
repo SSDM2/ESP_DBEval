@@ -1,5 +1,8 @@
 import ComponentCard from "../../common/ComponentCard";
 import { useDropzone } from "react-dropzone";
+import Label from "../Label";
+import Input from "../input/InputField";
+import Select from "../Select";
 // import Dropzone from "react-dropzone";
 
 const DropzoneComponent: React.FC = () => {
@@ -17,8 +20,26 @@ const DropzoneComponent: React.FC = () => {
       "image/svg+xml": [],
     },
   });
+
+  const options = [
+    { value: "QCM", label: "Question a choix multiple" },
+    { value: "template", label: "Template" },
+    { value: "development", label: "Development" },
+  ];
+  const handleSelectChange = (value: string) => {
+    console.log("Selected value:", value);
+  };
+
   return (
     <ComponentCard title="Déposer votre fichier">
+      <Label>Classe</Label>
+          <Select
+            options={options}
+            placeholder="Ex : Question / Reponse"
+            onChange={handleSelectChange}
+            className="dark:bg-dark-900"
+          />
+        
       <div className="transition border border-gray-300 border-dashed cursor-pointer dark:hover:border-brand-500 dark:border-gray-700 rounded-xl hover:border-brand-500">
         <form
           {...getRootProps()}
@@ -67,6 +88,7 @@ const DropzoneComponent: React.FC = () => {
               Browse File
             </span>
           </div>
+          
         </form>
       </div>
     </ComponentCard>
