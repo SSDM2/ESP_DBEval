@@ -13,6 +13,7 @@ inflection==0.5.1
 jmespath==1.0.1
 Markdown==3.7
 minio==7.2.15
+mysqlclient==2.2.7
 packaging==24.2
 pycparser==2.22
 pycryptodome==3.21.0
@@ -26,4 +27,3 @@ sqlparse==0.5.3
 typing_extensions==4.12.2
 uritemplate==4.1.1
 urllib3==2.3.0
-mysqlclient==2.1.1

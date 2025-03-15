@@ -126,7 +126,7 @@ SIMPLE_JWT = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'mydb'),  # Nom de la base de données
+        'NAME': os.environ.get('MYSQL_DATABASE', 'dbeval'),  # Nom de la base de données
         'USER': os.environ.get('MYSQL_USER', 'user'),      # Nom d'utilisateur
         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'userpassword'),  # Mot de passe
         'HOST': os.environ.get('DB_HOST', 'localhost'),    # Using localhost for local development
