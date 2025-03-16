@@ -1,11 +1,16 @@
-
+import EcommerceMetrics from "../../components/ecommerce/EcommerceMetrics";
+import MonthlySalesChart from "../../components/ecommerce/MonthlySalesChart";
 import StatisticsChart from "../../components/ecommerce/StatisticsChart";
-
+import MonthlyTarget from "../../components/ecommerce/MonthlyTarget";
+import RecentOrders from "../../components/ecommerce/RecentOrders";
+import DemographicCard from "../../components/ecommerce/DemographicCard";
 import PageMeta from "../../components/common/PageMeta";
 import MeilleursEtudiants from "../../components/ecommerce/MeilleursEtudiants";
 import TauxReussite from "../../components/ecommerce/TauxReussite";
 import NombreEtudiant from "../../components/ecommerce/NombreEtudiant";
-
+import TwoColumnImageGrid from "../../components/ui/images/TwoColumnImageGrid";
+import ComponentCard from "../../components/common/ComponentCard";
+import ResponsiveImage from "../../components/ui/images/ResponsiveImage";
 
 export default function Home() {
   return (

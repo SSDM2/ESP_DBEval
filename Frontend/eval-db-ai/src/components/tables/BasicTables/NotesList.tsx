@@ -7,7 +7,7 @@ import {
 } from "../../ui/table";
 
 import Badge from "../../ui/badge/Badge";
-import {  FileIcon,  MoreDotIcon, PencilIcon,  TrashBinIcon } from "../../../icons";
+import { BoltIcon, BoxIconLine, CheckCircleIcon, CloseIcon, FileIcon, InfoIcon, MoreDotIcon, PencilIcon, PlusIcon, TrashBinIcon } from "../../../icons";
 import { Dropdown } from "../../ui/dropdown/Dropdown";
 import { DropdownItem } from "../../ui/dropdown/DropdownItem";
 import { useState } from "react";
@@ -150,7 +150,7 @@ export default function NotesList() {
                 isHeader
                 className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Correction
+                Copie
               </TableCell>
               <TableCell
                 isHeader
@@ -244,16 +244,30 @@ export default function NotesList() {
                       onClose={handleCloseDropdown}
                       className="w-40 p-2"
                     >
+                      <Dropdown
+                      isOpen={openDropdownId === product.id}
+                      onClose={handleCloseDropdown}
+                      className="w-40 p-2 dark:bg-gary-900"
+                    >
                       <DropdownItem
                         onItemClick={handleCloseDropdown}
-                        className="flex w-full items-center space-x-2 font-normal text-left text-red-500 rounded-lg hover:bg-red-100 hover:text-red-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                        className="flex w-full items-center space-x-2 font-normal text-left text-red-500 rounded-lg hover:bg-gary-50 hover:text-red-700"
                       >
-                        < TrashBinIcon className="text-red-500 hover:text-gray-700 dark:hover:text-gray-300 size-4" />
+                        < TrashBinIcon className="text-red-500 dark:hover:text-gray-300 size-4" />
                         <div>
-
                           Supprimer
                         </div>
                       </DropdownItem>
+                      <DropdownItem
+                        onItemClick={handleCloseDropdown}
+                        className="flex w-full items-center space-x-2 font-normal text-left gray-gray-500 rounded-lg hover:bg-gray-100 hover:gray-gray-700 dark:gray-gray-400 dark:hover:bg-white/6 dark:bg:gray-gray-200"
+                      >
+                        < PencilIcon className="gray-gray-500 hover:gray-gray-700 dark:hover:gray-gray-300 size-4" />
+                        <div>
+                          Modifier
+                        </div>
+                      </DropdownItem>
+                    </Dropdown>
                       <DropdownItem
                         onItemClick={handleCloseDropdown}
                         className="flex w-full items-center space-x-2 font-normal text-left gray-gray-500 rounded-lg hover:bg-gray-100 hover:gray-gray-700 dark:gray-gray-400 dark:hover:bg-white/5 dark:hover:gray-gray-300"
