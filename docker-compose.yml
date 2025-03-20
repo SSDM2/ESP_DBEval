@@ -7,10 +7,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: dbeval
-      MYSQL_USER: user
+      MYSQL_USER: eval
       MYSQL_PASSWORD: userpassword
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./Backend/database/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - esp_dbeval_net
 
@@ -46,11 +47,11 @@ services:
       - AWS_ACCESS_KEY_ID=minio
       - AWS_SECRET_ACCESS_KEY=minio@dmin
       - AWS_STORAGE_BUCKET_NAME=documents
-      - AWS_S3_ENDPOINT_URL=minio:9000
+      - AWS_S3_ENDPOINT_URL=http://192.168.1.39:9002
       - AWS_LOCATION=exercises
       - DB_HOST=mysql
       - DB_NAME=dbeval
-      - DB_USER=user
+      - DB_USER=eval
       - DB_PASSWORD=userpassword
     networks:
       - esp_dbeval_net
