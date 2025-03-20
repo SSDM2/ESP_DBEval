@@ -60,7 +60,7 @@ class ChangePasswordView(generics.UpdateAPIView):
     def get_object(self):
         # Utilisez l'utilisateur authentifié, qui est supposé être un professeur
         return self.request.user
-
+    
     def update(self, request, *args, **kwargs):
         user = self.get_object()
         serializer = self.get_serializer(data=request.data, context={'request': request})
