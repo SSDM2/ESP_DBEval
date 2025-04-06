@@ -6,7 +6,7 @@ import ComponenForm from "../../common/ComponentForm";
 import ComponentForm from "../../common/ComponentForm";
 // import Dropzone from "react-dropzone";
 
-const DropExam: React.FC = () => {
+const  DropExam: React.FC = () => {
   const onDrop = (acceptedFiles: File[]) => {
     console.log("Files dropped:", acceptedFiles);
     // Handle file uploads here

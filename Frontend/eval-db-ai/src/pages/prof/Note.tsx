@@ -47,8 +47,8 @@ export default function Note() {
                 <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
                   <GroupIcon className="text-blue-800 size-6 dark:text-white/90" />
                 </div>
-                <h3 className="text-lg font-semibold text-blue-800 dark:text-white/90">
-                  Liste des Notes proposée par l'IA
+                <h3 className="text-sm text-blue-800 dark:text-white/90">
+                Liste des Notes proposée par l'IA
                 </h3>
               </div>
               <Button className="bg-green-500 hover:bg-green-600"

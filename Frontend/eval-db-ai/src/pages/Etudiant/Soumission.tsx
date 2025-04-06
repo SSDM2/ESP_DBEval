@@ -1,9 +1,9 @@
-import PageBreadcrumb from "../../../components/common/PageBreadCrumb";
-import PageMeta from "../../../components/common/PageMeta";
-import { GroupIcon } from "../../../icons";
-import SoumissionInputs from "../../../components/form/Exercices/SoumissionInputs";
-import SoumissionFile from "../../../components/form/form-elements/SoumissionFile";
-import SoumissionstList from "../../../components/tables/BasicTables/SoumissionstList";
+import PageBreadcrumb from "../../components/common/PageBreadCrumb";
+import PageMeta from "../../components/common/PageMeta";
+import SoumissionInputs from "../../components/form/Exams/SoumissionInputs";
+import SoumissionFile from "../../components/form/form-elements/SoumissionFile";
+import SoumissionstList from "../../components/tables/BasicTables/SoumissionstList";
+import { GroupIcon } from "../../icons";
 
 export default function Soumission() {
   return (

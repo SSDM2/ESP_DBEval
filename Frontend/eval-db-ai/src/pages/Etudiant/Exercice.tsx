@@ -14,11 +14,11 @@ import ExerciceInputs from "../../../components/form/Exercices/ExerciceInput";
 import EtudiantList from "../../../components/tables/BasicTables/ExercicestList";
 import { BoxIcon, GroupIcon } from "../../../icons";
 import Button from "../../../components/ui/button/Button";
-import ExercicestList from "../../../components/tables/BasicTables/ExercicestList";
 import ComponentCard from "../../../components/common/ComponentCard";
 import SoumissionStat from "../../../components/ecommerce/SoumissionStat";
 import ResponsiveImage from "../../../components/ui/images/ResponsiveImage";
 import TwoColumnImageGrid from "../../../components/ui/images/TwoColumnImageGrid";
+import DepositPage from "./ExamList";
 
 export default function Exercice() {
   return (
@@ -72,7 +72,7 @@ export default function Exercice() {
                 </Button>
               </div>
             </div>
-            <ExercicestList />
+            <DepositPage />
           </div>
         </div>
       </div>

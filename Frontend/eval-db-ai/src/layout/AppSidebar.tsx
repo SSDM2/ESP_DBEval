@@ -9,7 +9,6 @@ import {
  
   ChevronDownIcon,
   FileIcon,
-  FolderIcon,
   GridIcon,
   HorizontaLDots,
   ListIcon,
@@ -50,7 +49,7 @@ const navItemsProfesseur: NavItem[] = [
         description: "Téléchargez des sujets d'examen au format texte ou PDF.",
       },
       { 
-        name: "Consulter les Sujets Déposés", 
+        name: "Sujets Déposés", 
         path: "/view-exams", 
         description: "Voir les sujets déposés par les autres professeurs.",
       },
@@ -63,7 +62,7 @@ const navItemsProfesseur: NavItem[] = [
     description: "Gérer les corrections et modèles de correction.",
     subItems: [
       { 
-        name: "Ajouter un Modèle de Correction", 
+        name: "Modèle de Correction", 
         path: "/add-correction-model", 
         description: "Ajoutez des modèles de correction pour chaque exercice.",
       },
@@ -76,10 +75,26 @@ const navItemsProfesseur: NavItem[] = [
   },
 
   {
-    name: "Tableau de Performance",
-    icon: <FolderIcon />,
-    description: "Consulter les performances des étudiants.",
-    path: "/performance-dashboard",
+    name: "Statistiques",
+    icon: <GridIcon />,
+    description: "Consulter les statistiques d'examen pour améliorer les cours.",
+    subItems: [
+      { 
+        name: "Taux de Réussite", 
+        path: "/success-rate", 
+        description: "Statistiques sur le nombre de soumissions et le taux de réussite.",
+      },
+      { 
+        name: "Questions Mal Comprises", 
+        path: "/misunderstood-questions", 
+        description: "Voir les questions mal comprises par les étudiants.",
+      },
+      { 
+        name: "Tendances d'Apprentissage", 
+        path: "/learning-trends", 
+        description: "Identifier les tendances d'apprentissage pour adapter les exercices futurs.",
+      },
+    ],
   },
   {
     name: "Gestion des Comptes",
@@ -125,6 +140,7 @@ const navItemsEtudiant: NavItem[] = [
       },
     ],
   },
+  
 
   {
     name: "Corrections et Notes",

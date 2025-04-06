@@ -10,7 +10,7 @@ import SelectInputs from "../../components/form/form-elements/SelectInputs";
 import TextAreaInput from "../../components/form/form-elements/TextAreaInput";
 import InputStates from "../../components/form/form-elements/InputStates";
 import PageMeta from "../../components/common/PageMeta";
-import EtudiantList from "../../components/tables/BasicTables/ExamsList";
+import EtudiantList from "../../components/tables/BasicTables/RateExam";
 import { BoxIcon, GroupIcon } from "../../icons";
 import Button from "../../components/ui/button/Button";
 import UsersList from "../../components/tables/BasicTables/UsersList";

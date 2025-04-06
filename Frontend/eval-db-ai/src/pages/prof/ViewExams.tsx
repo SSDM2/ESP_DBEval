@@ -4,7 +4,7 @@ import DropzoneComponent from "../../components/form/form-elements/DropZone";
 import PageMeta from "../../components/common/PageMeta";
 import { BoxIcon, DocsIcon, GroupIcon } from "../../icons";
 import Button from "../../components/ui/button/Button";
-import ExamsstList from "../../components/tables/BasicTables/ExamsList";
+import ExamsstList from "../../components/tables/BasicTables/RateExam";
 import ComponentCard from "../../components/common/ComponentCard";
 import SoumissionStat from "../../components/ecommerce/SoumissionStat";
 import TwoColumnImageGrid from "../../components/ui/images/TwoColumnImageGrid";
@@ -44,7 +44,7 @@ export default function ViewExam() {
                   <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
                     <BoxIcon className="text-blue-800 size-6 dark:text-white/90" />
                   </div>
-                  <h3 className="text-lg font-semibold text-blue-800 dark:text-white/90">
+                  <h3 className="text-sm text-blue-800 dark:text-white/90">
                     Liste des Examens
                   </h3>
                 </div>
