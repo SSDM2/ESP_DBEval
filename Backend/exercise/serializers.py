@@ -13,6 +13,12 @@ class ExerciseSerializer(serializers.ModelSerializer):
         model = Exercise
         fields = ['uuid', 'title', 'description', 'pdf', 'sender', 'classroom', 'deadline', 'created_at', 'updated_at']
 
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        if representation['pdf']:
+            representation['pdf'] = f"{settings.AWS_S3_ENDPOINT_URL}/{settings.AWS_STORAGE_BUCKET_NAME}/{representation['pdf']}"
+        return representation
+    
     # def validate_pdf(self, value):
     #     return value
     

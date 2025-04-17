@@ -1,8 +1,9 @@
 from django.conf import settings
+from exercise.functions import validate_pdf
 from utils.constants import AppConstants
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
-from .models import Exercise, Classroom, validate_pdf_size
+from .models import Exercise, Classroom
 from .serializers import ExerciseSerializer
 from django.core.exceptions import ValidationError
 
@@ -43,7 +44,7 @@ class ExerciseViewSet(viewsets.ModelViewSet):
 
         # Valider la taille du fichier
         try:
-            validate_pdf_size(pdf_file)
+            validate_pdf(pdf_file)
         except ValidationError as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
