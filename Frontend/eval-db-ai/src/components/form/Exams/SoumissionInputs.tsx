@@ -1,14 +1,8 @@
 import { useState } from "react";
 import ComponentCard from "../../common/ComponentCard";
-import Label from "../Label";
-import Input from "../input/InputField";
-import Select from "../Select";
-import { ArrowDownIcon, ArrowUpIcon, BoxIcon, CalenderIcon, EyeCloseIcon, EyeIcon, FileIcon, InfoIcon, PlugInIcon, PlusIcon, TaskIcon, TimeIcon, UserCircleIcon } from "../../../icons";
-import TextArea from "../input/TextArea";
-import UserProfiles from "../../../pages/UserProfiles";
+import { ArrowDownIcon, FileIcon, TaskIcon, TimeIcon } from "../../../icons";
 import Badge from "../../ui/badge/Badge";
-import Button from "../../ui/button/Button";
-
+  
 export default function SoumissionInputs() {
   const options = [
     { value: "QCM", label: "Question a choix multiple" },

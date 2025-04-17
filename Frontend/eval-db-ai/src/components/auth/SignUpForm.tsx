@@ -9,23 +9,16 @@ export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   return (
-    <div className="flex flex-col flex-1 w-full overflow-y-auto lg:w-1/2 no-scrollbar">
-      <div className="w-full max-w-md mx-auto mb-5 sm:pt-10">
-        <Link
-          to="/"
-          className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-        >
-          <ChevronLeftIcon className="size-5" />
-          Back to dashboard
-        </Link>
-      </div>
-      <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
+    <div className="flex flex-col mt-5 flex-1">
+     
+      <div className="flex flex-col bg-white  p-5 rounded-2xl justify-center flex-1 w-full max-w-md mx-auto">
+        <div>
         <div>
           <div className="mb-5 sm:mb-8">
-            <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
-              Sign Up
+          <h1 className="mb-2 text-center font-bold text-blue-800 text-title-sm dark:text-white/90 sm:text-title-md">
+          Sign Up
             </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-center text-gray-500 dark:text-gray-400">
               Enter your email and password to sign up!
             </p>
           </div>
@@ -185,6 +178,7 @@ export default function SignUpForm() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -10,8 +10,7 @@ import ComponenForm from "../../common/ComponentForm";
 export default function ExamInputs() {
   const options = [
     { value: "QCM", label: "Question a choix multiple" },
-    { value: "template", label: "Template" },
-    { value: "development", label: "Development" },
+    { value: "QR", label: "Questions/Reponses" },
   ];
   const handleSelectChange = (value: string) => {
     console.log("Selected value:", value);

@@ -24,9 +24,17 @@ import Correction from "./pages/prof/Correction";
 import Note from "./pages/prof/Note";
 import Users from "./pages/Users/Users";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Exams from "./pages/prof/CreateExams";
 import CreateExams from "./pages/prof/CreateExams";
 import ViewExam from "./pages/prof/ViewExams";
+import SuccessRate from "./pages/prof/SuccessRate";
+import ModeleCorrection from "./pages/prof/ModeleCorrection";
+import CreateModelCorrection from "./pages/prof/CreateModeleCorrection";
+import Questions from "./pages/Etudiant/ModelQuestion";
+import CorrectionPage from "./pages/Etudiant/ModelQuestion";
+import LearningProgressPage from "./pages/Etudiant/LearningProgressPage";
+import DepositPage from "./pages/Etudiant/ExamList";
+import ExamsStudent from "./pages/Etudiant/Exercice";
+import SoumissionStudent from "./pages/Etudiant/Soumission";
 
 
 
@@ -45,18 +53,26 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
 
-            {/* Classes */}
+            {/* Professeur */}
             <Route path="/upload-exam" element={<CreateExams />} />
+            <Route path="/add-correction-model" element={<CreateModelCorrection />} />
+            <Route path="/view-corrections" element={<ModeleCorrection />} />
             <Route path="/view-exams" element={<ViewExam/>} />
+            <Route path="/success-rate" element={<SuccessRate/>} />
             <Route path="/soumissions" element={<Soumission />} />
             <Route path="/corrections" element={<Correction />} />
-            <Route path="/profile" element={<UserProfiles />} />
             <Route path="/notes" element={<Note />} />
             <Route path="/reclamations" element={<Note />} />
-            <Route path="/reclamations" element={<Note />} />
+            <Route path="/misunderstood-questions" element={<Questions />} />
+            <Route path="/misunderstood-questions/details" element={<CorrectionPage />} />
+            <Route path="/learning-trends" element={<LearningProgressPage />} />
+            <Route path="/CorrectionPage" element={<CorrectionPage />} />
 
-            {/* professeur */}
+            {/* etudiant */} 
             <Route path="/notes" element={<Note />} />
+            <Route path="/exams" element={<ExamsStudent />} />
+            <Route path="/submit-answer" element={<SoumissionStudent/>} />
+            <Route path="/answers" element={<LearningProgressPage/>} />
 
             {/* Gestion de compte */}
             <Route path="/users" element={<Users />} />

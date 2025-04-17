@@ -9,7 +9,6 @@ import {
  
   ChevronDownIcon,
   FileIcon,
-  FolderIcon,
   GridIcon,
   HorizontaLDots,
   ListIcon,
@@ -32,7 +31,7 @@ const navItemsProfesseur: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Tableau de Bord",
-    path: "/dashboard",
+    path: "/",
     description: "Vue d'ensemble des performances et des statistiques.",
   },
 
@@ -50,7 +49,7 @@ const navItemsProfesseur: NavItem[] = [
         description: "Téléchargez des sujets d'examen au format texte ou PDF.",
       },
       { 
-        name: "Consulter les Sujets Déposés", 
+        name: "Sujets Déposés", 
         path: "/view-exams", 
         description: "Voir les sujets déposés par les autres professeurs.",
       },
@@ -63,7 +62,7 @@ const navItemsProfesseur: NavItem[] = [
     description: "Gérer les corrections et modèles de correction.",
     subItems: [
       { 
-        name: "Ajouter un Modèle de Correction", 
+        name: "Modèle de Correction", 
         path: "/add-correction-model", 
         description: "Ajoutez des modèles de correction pour chaque exercice.",
       },
@@ -76,10 +75,26 @@ const navItemsProfesseur: NavItem[] = [
   },
 
   {
-    name: "Tableau de Performance",
-    icon: <FolderIcon />,
-    description: "Consulter les performances des étudiants.",
-    path: "/performance-dashboard",
+    name: "Statistiques",
+    icon: <GridIcon />,
+    description: "Consulter les statistiques d'examen pour améliorer les cours.",
+    subItems: [
+      { 
+        name: "Taux de Réussite", 
+        path: "/success-rate", 
+        description: "Statistiques sur le nombre de soumissions et le taux de réussite.",
+      },
+      { 
+        name: "Questions Mal Comprises", 
+        path: "/misunderstood-questions", 
+        description: "Voir les questions mal comprises par les étudiants.",
+      },
+      { 
+        name: "Tendances d'Apprentissage", 
+        path: "/learning-trends", 
+        description: "Identifier les tendances d'apprentissage pour adapter les exercices futurs.",
+      },
+    ],
   },
   {
     name: "Gestion des Comptes",
@@ -96,6 +111,11 @@ const navItemsProfesseur: NavItem[] = [
         path: "/create-student-account", 
         description: "Créer et gérer les comptes pour les étudiants.",
       },
+      { 
+        name: "Comptes", 
+        path: "/users", 
+        description: "Gestion des comptes des étudiants.",
+      },
     ],
   },
  
@@ -104,33 +124,34 @@ const navItemsEtudiant: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Tableau de Bord",
-    path: "/etudiant/",
+    path: "/etudiant",
     description: "Accédez à vos statistiques, vos progrès et les activités récentes.",
   },
 
   {
-    name: "Mes Examen et Sujets",
+    name: "Examens",
     icon: <ListIcon />,
     description: "Accéder aux sujets déposés et soumettre des réponses.",
     subItems: [
       { 
-        name: "Voir les Sujets d'Examen", 
+        name: "Sujets d'Examen", 
         path: "/exams", 
         description: "Accédez aux sujets déposés par les professeurs.",
       },
       { 
-        name: "Soumettre une Réponse", 
+        name: "Depots", 
         path: "/submit-answer", 
         description: "Soumettez vos réponses en format PDF (avec Drag & Drop).",
       },
     ],
   },
+  
 
   {
     name: "Corrections et Notes",
     icon: <CheckCircleIcon />,
     description: "Consulter les corrections automatiques et les notes attribuées.",
-    path: "/my-corrections",
+    path: "/answers",
   },
 
   {
@@ -171,7 +192,7 @@ const othersItems: NavItem[] = [
       fill=""
     />
   </svg>,
-    path: "/logout",
+    path: "/signin",
     description: "Se déconnecter de l'application.",
   },
    // Menu Profil
@@ -238,7 +259,7 @@ const AppSidebar: React.FC = () => {
   useEffect(() => {
     let submenuMatched = false;
     ["main", "parametres"].forEach((menuType) => {
-      const items = menuType === "main" ? navItemsProfesseur : othersItems;
+      const items = menuType === "main" ? navItemsEtudiant : othersItems;
       items.forEach((nav, index) => {
         if (nav.subItems) {
           nav.subItems.forEach((subItem) => {
@@ -447,7 +468,7 @@ const AppSidebar: React.FC = () => {
                   <HorizontaLDots className="size-6" />
                 )}
               </h2>
-              {renderMenuItems(navItemsProfesseur, "main")}
+              {renderMenuItems(navItemsEtudiant, "main")}
             </div>
             <div className="">
               <h2

@@ -13,7 +13,7 @@ export default function SoumissionStat() {
       <div className="rounded-2xl border border-gray-200 bg-blue-50 dark:border-gray-800 dark:bg-white/[0.03] md:p-4">
         <div className="flex items-center space-x-2" >
           <div className="items-center" >
-            <div className="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-xl dark:bg-gray-800">
+            <div className="flex items-center justify-center  bg-blue-100 rounded-xl dark:bg-gray-800">
               <GroupIcon className="text-blue-800 size-6 dark:text-white/90" />
             </div>
 

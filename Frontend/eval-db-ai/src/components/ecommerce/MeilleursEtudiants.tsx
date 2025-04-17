@@ -25,48 +25,49 @@ const tableData: user[] = [
   {
     id: 1,
     name: "Serigne Modou Thiam",
-    classe: "Master 1",
+    classe: "Master 1 Informatique",
     taux: "91",
     note: "15",
     status: "Delivered",
-    image: "/images/user/user-01.png", // Replace with actual image URL
+    image: "/images/user/user-01.png",
   },
   {
     id: 2,
-    name: "Serigne Modou Thiam",
-    classe: "Master IABD",
+    name: "Awa Ndiaye",
+    classe: "Master 2 Big Data",
     taux: "51",
     note: "12",
     status: "Pending",
-    image: "/images/user/user-01.png", // Replace with actual image URL
+    image: "/images/user/user.png",
   },
   {
     id: 3,
-    name: "Serigne Modou Thiam",
-    classe: "Master IABD",
+    name: "Mamadou Diop",
+    classe: "Licence 3 Réseaux",
     taux: "95",
     note: "18",
     status: "Delivered",
-    image: "/images/user/user-01.png", // Replace with actual image URL
+    image: "/images/user/user.png",
   },
   {
     id: 4,
-    name: "Serigne Modou Thiam",
-    classe: "Master IABD",
+    name: "Fatou Sarr",
+    classe: "Master 1 IOT",
     taux: "77",
     note: "16",
     status: "Canceled",
-    image: "/images/user/user-01.png", // Replace with actual image URL
+    image: "/images/user/user.png",
   },
   {
     id: 5,
-    name: "Serigne Modou Thiam",
-    classe: "Master IABD",
+    name: "Cheikh Ba",
+    classe: "Licence 2 Informatique",
     taux: "77",
     note: "20",
     status: "Delivered",
-    image: "/images/user/user-01.png", // Replace with actual image URL
-  },
+    image: "/images/user/user.png",
+  }
+  
 ];
 
 export default function MeilleursEtudiants() {

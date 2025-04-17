@@ -1,11 +1,11 @@
-import PageBreadcrumb from "../../../components/common/PageBreadCrumb";
-import PageMeta from "../../../components/common/PageMeta";
-import { GroupIcon } from "../../../icons";
-import SoumissionInputs from "../../../components/form/Exercices/SoumissionInputs";
-import SoumissionFile from "../../../components/form/form-elements/SoumissionFile";
-import SoumissionstList from "../../../components/tables/BasicTables/SoumissionstList";
+import PageBreadcrumb from "../../components/common/PageBreadCrumb";
+import PageMeta from "../../components/common/PageMeta";
+import SoumissionInputs from "../../components/form/Exams/SoumissionInputs";
+import SoumissionFile from "../../components/form/form-elements/SoumissionFile";
+import SoumissionstList from "../../components/tables/BasicTables/SoumissionstList";
+import { GroupIcon } from "../../icons";
 
-export default function Soumission() {
+export default function SoumissionStudent() {
   return (
     <div className="space-y-4">
       <PageMeta
@@ -14,9 +14,6 @@ export default function Soumission() {
       />
       <PageBreadcrumb pageTitle="Soumissions" />
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-        <div className="space-y-6">
-          <SoumissionInputs />
-        </div>
         <div className="space-y-6">
           <SoumissionFile />
          
