@@ -1,6 +1,3 @@
-
-
-
 """
 Django settings for config project.
 
@@ -13,10 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import os
 from pathlib import Path
 from datetime import timedelta
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,8 +44,7 @@ INSTALLED_APPS = [
     'professor',
     'student',
     'drf_yasg',
-    'classroom',
-    'exercise',
+    'classroom'
 ]
 
 MIDDLEWARE = [
@@ -122,21 +116,6 @@ DATABASES = {
     }
 }
 
-## Modification de la configuration de la base de données pour utiliser MySQL au lieu de SQLite.
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.environ.get('MYSQL_DATABASE', 'dbeval'),  # Nom de la base de données
-#         'USER': os.environ.get('MYSQL_USER', 'eval'),      # Nom d'utilisateur
-#         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'userpassword'),  # Mot de passe
-#         'HOST': os.environ.get('DB_HOST', 'localhost'),    # Using localhost for local development
-#         'PORT': os.environ.get('DB_PORT', '3306'),         # Port MySQL
-#         'OPTIONS': {
-#             'charset': 'utf8mb4',  # Pour supporter les caractères spéciaux
-#         },
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -156,9 +135,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# cors headers config
-CORS_ALLOW_ALL_ORIGINS = True
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -175,12 +151,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = "blogs.storage.StaticS3Boto3Storage"
-
-MEDIA_URL = '/media/'
-DEFAULT_FILE_STORAGE = "blogs.storage.S3MediaStorage"
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -188,19 +159,3 @@ DEFAULT_FILE_STORAGE = "blogs.storage.S3MediaStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'  # Remplacez 'user' par le nom de votre application
-
-# Configuration de MinIO comme stockage S3
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')  # clé d'accès MinIO
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')  # clé secrète MinIO
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')  # Nom du bucket MinIO
-AWS_S3_ENDPOINT_URL = os.getenv('AWS_S3_ENDPOINT_URL')  # URL de MinIO (ex. http://localhost:9000)
-# MINIO_ACCESS_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}'
-
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_S3_USE_SSL = False  # Désactivez SSL si vous utilisez HTTP
-AWS_LOCATION = 'exercises'  # Dossier où les fichiers seront stockés dans MinIO
-
-AWS_DEFAULT_ACL = None  # Aucun ACL par défaut (accès privé)
-
