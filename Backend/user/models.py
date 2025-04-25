@@ -1,13 +1,8 @@
-from enum import Enum
 import uuid
 from django.utils.translation import gettext_lazy as _
 from django.contrib.gis.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-
-class RoleEnum(Enum):
-    PROFESSOR = 'Professor'
-    STUDENT = 'Student'
-    ADMIN = 'Admin'
+from utils.enums import RoleEnum
 
 class CustomAccountManager(BaseUserManager):
     def create_superuser(self, email, first_name, last_name, password, **other_fields):
@@ -25,7 +20,7 @@ class CustomAccountManager(BaseUserManager):
 
         return self.create_user(email, first_name, last_name, password, **other_fields)
 
-    def create_user(self, email, first_name, last_name, password, role=RoleEnum.ADMIN, **other_fields):
+    def create_user(self, email, first_name, last_name, password, role=RoleEnum.ADMIN.name, **other_fields):
         if role:
             if role not in [role.name for role in RoleEnum]:
                 raise ValueError('Role must be either Professor or Student.')

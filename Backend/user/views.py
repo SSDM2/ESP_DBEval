@@ -21,7 +21,6 @@ class LoginView(APIView):
         serializer = LoginSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             user = serializer.validated_data['user']
-            # req = User.objects.get(uuid=user.uuid)
             user.last_login = datetime.today()
             user.save()
             # Générer les tokens JWT
@@ -61,7 +60,7 @@ class ChangePasswordView(generics.UpdateAPIView):
     def get_object(self):
         # Utilisez l'utilisateur authentifié, qui est supposé être un professeur
         return self.request.user
-
+    
     def update(self, request, *args, **kwargs):
         user = self.get_object()
         serializer = self.get_serializer(data=request.data, context={'request': request})
