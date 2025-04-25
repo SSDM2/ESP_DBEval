@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'professor',
     'student',
     'drf_yasg',
-    'classroom'
+    'classroom',
+    'ai_integration'
 ]
 
 MIDDLEWARE = [

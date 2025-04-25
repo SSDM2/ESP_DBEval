@@ -17,26 +17,43 @@ Including another URLconf
 from django.contrib import admin
 # db_evaluation_platform/urls.py
 from django.urls import path, include
+from django.views.generic import RedirectView
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="API Documentation",
+        title="ESP DBEval API",
         default_version='v1',
-        description="API for DB Evaluation Platform",
+        description="""API documentation for ESP DBEval
+        
+        Authentication:
+        - POST /auth/token/ - Get JWT token (use email and password)
+        - POST /auth/token/refresh/ - Refresh JWT token
+        - POST /auth/login/ - Login endpoint
+        
+        Professor API:
+        - /api/professor/ - Professor endpoints
+        
+        Student API:
+        - /api/student/ - Student endpoints
+        
+        AI Integration:
+        - /api/ai/ - AI integration endpoints
+        """,
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='swagger/', permanent=False), name='index'),
     path('admin/', admin.site.urls),
-    path('api/', include('professor.urls')),
-    path('api/', include('student.urls')),
-    path('api/', include('classroom.urls')),
     path('auth/', include('user.urls')),
+    path('api/professor/', include('professor.urls')),
+    path('api/student/', include('student.urls')),
+    path('api/ai/', include('ai_integration.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
