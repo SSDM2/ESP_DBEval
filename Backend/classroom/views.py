@@ -1,3 +1,6 @@
+from student.serializers import StudentBasicSerializer
+from exercise.serializers import ExerciseSerializer
+from exercise.models import Exercise
 from professor.models import Professor
 from student.models import Student
 from user.models import RoleEnum
@@ -89,3 +92,19 @@ class ClassroomViewSet(viewsets.ModelViewSet):
         classroom.professor = None
         classroom.save()
         return Response({"message": "Professor: "+ delete.first_name +" removed successfully"}, status=status.HTTP_200_OK)
+    
+    
+    @action(detail=True, methods=['get'], url_path='exercises')
+    def list_exercises(self, request, uuid):
+        classroom = self.get_object()
+        exercises = Exercise.objects.filter(classroom=classroom)
+        serializer = ExerciseSerializer(exercises, many=True)
+        return Response(serializer.data)
+    
+    
+    # @action(detail=True, methods=['get'], url_path='students')
+    # def list_students(self, request, uuid):
+    #     classroom = self.get_object()
+    #     students = Student.objects.filter(classroom=classroom)
+    #     serializer = StudentBasicSerializer(students, many=True)
+    #     return Response(serializer.data)
