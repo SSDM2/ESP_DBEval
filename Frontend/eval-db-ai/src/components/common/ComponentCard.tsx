@@ -13,10 +13,10 @@ const ComponentCard: React.FC<ComponentCardProps> = ({
 }) => {
   return (
     <div
-      className={`m-4 rounded-2xl border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03] ${className}`}
+      className={`m-2 rounded-3xl border border-gray-50 dark:border-gray-800 dark:bg-white/[0.03] ${className}`}
     >
       {/* Card Header */}
-      <div className="px-6 py-5 bg-gray-50 border-l-4 border-blue-800 dark:bg-gray-800 dark:border-blue-800">
+      <div className="p-2 bg-gray-50 border-l-4 border-blue-800 dark:bg-gray-800 dark:border-blue-800">
         <h3 className="text-md text-blue-800 dark:text-white/90 ">
           {title}
         </h3>

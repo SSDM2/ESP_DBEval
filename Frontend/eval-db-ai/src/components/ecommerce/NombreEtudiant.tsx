@@ -40,7 +40,7 @@ export default function NombreEtudiant() {
         <div className="flex items-end justify-between mt-5">
           <div>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              Exercice
+              Projets
             </span>
             <h4 className="mt-2 font-bold text-blue-800 text-title-sm dark:text-white/90">
               5

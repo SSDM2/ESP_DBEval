@@ -18,13 +18,10 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-import Exercice from "./pages/prof/CreateExams";
 import Soumission from "./pages/prof/Soumission";
 import Correction from "./pages/prof/Correction";
-import Note from "./pages/prof/Note";
 import Users from "./pages/Users/Users";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Exams from "./pages/prof/CreateExams";
 import CreateExams from "./pages/prof/CreateExams";
 import ViewExam from "./pages/prof/ViewExams";
 import SuccessRate from "./pages/prof/SuccessRate";
@@ -33,6 +30,13 @@ import CreateModelCorrection from "./pages/prof/CreateModeleCorrection";
 import Questions from "./pages/Etudiant/ModelQuestion";
 import CorrectionPage from "./pages/Etudiant/ModelQuestion";
 import LearningProgressPage from "./pages/Etudiant/LearningProgressPage";
+import ExamsStudent from "./pages/Etudiant/Exercice";
+import SoumissionStudent from "./pages/Etudiant/Soumission";
+import CreateAcount from "./pages/prof/CreateAcount";
+import CreateAcountEtudiant from "./pages/Etudiant/CreateAcountEtudiant";
+import Note from "./pages/Etudiant/NoteStudent";
+import StudentDashbord from "./pages/Etudiant/StudentDashbord";
+import NoteStudents from "./pages/Etudiant/NoteStudent";
 
 
 
@@ -49,7 +53,7 @@ export default function App() {
         <Routes>
           {/* Dashboard Layout */}
           <Route element={<AppLayout />}>
-            <Route index path="/dashboard" element={<Home />} />
+            <Route index path="/" element={<Home />} />
 
             {/* Professeur */}
             <Route path="/upload-exam" element={<CreateExams />} />
@@ -64,9 +68,16 @@ export default function App() {
             <Route path="/misunderstood-questions" element={<Questions />} />
             <Route path="/misunderstood-questions/details" element={<CorrectionPage />} />
             <Route path="/learning-trends" element={<LearningProgressPage />} />
+            <Route path="/CorrectionPage" element={<CorrectionPage />} />
+            <Route path="/create-account" element={<CreateAcount />} />
+            <Route path="/create-student-account" element={<CreateAcountEtudiant />} />
 
-            {/* professeur */}
-            <Route path="/notes" element={<Note />} />
+            {/* etudiant */} 
+            <Route path="/student" element={<StudentDashbord />} />
+            <Route path="/my-notes" element={<NoteStudents />} />
+            <Route path="/exams" element={<ExamsStudent />} />
+            <Route path="/submit-answer" element={<SoumissionStudent/>} />
+            <Route path="/answers" element={<LearningProgressPage/>} />
 
             {/* Gestion de compte */}
             <Route path="/users" element={<Users />} />

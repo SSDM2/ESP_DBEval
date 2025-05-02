@@ -97,7 +97,7 @@ export default function CorrectionModelList() {
         <Table>
           {/* Table Header */}
           <TableHeader className="border-blue-800 dark:border-gray-800 border-y">
-            <TableRow>
+            <TableRow className="bg-slate-50 dark:bg-blue-950">
               <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
                 ID
               </TableCell>
@@ -176,6 +176,13 @@ export default function CorrectionModelList() {
                       onClose={handleCloseDropdown}
                       className="w-40 p-2 dark:bg-gary-900"
                     >
+                       <DropdownItem
+                        onItemClick={handleCloseDropdown}
+                        className="flex w-full items-center space-x-2 font-normal text-left text-blue-800 rounded-lg hover:bg-gary-50 hover:blue-red-700"
+                      >
+                        <TrashBinIcon className="text-blue-800 dark:hover:text-gray-300 size-4" />
+                        <div>Ajuster</div>
+                      </DropdownItem>
                       <DropdownItem
                         onItemClick={handleCloseDropdown}
                         className="flex w-full items-center space-x-2 font-normal text-left text-red-500 rounded-lg hover:bg-gary-50 hover:text-red-700"
@@ -183,6 +190,7 @@ export default function CorrectionModelList() {
                         <TrashBinIcon className="text-red-500 dark:hover:text-gray-300 size-4" />
                         <div>Supprimer</div>
                       </DropdownItem>
+                     
                       <DropdownItem
                         onItemClick={handleCloseDropdown}
                         className="flex w-full items-center space-x-2 font-normal text-left gray-gray-500 rounded-lg hover:bg-gray-100 hover:gray-gray-700 dark:gray-gray-400 dark:hover:bg-white/6 dark:bg:gray-gray-200"

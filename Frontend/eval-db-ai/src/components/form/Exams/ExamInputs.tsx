@@ -10,8 +10,7 @@ import ComponenForm from "../../common/ComponentForm";
 export default function ExamInputs() {
   const options = [
     { value: "QCM", label: "Question a choix multiple" },
-    { value: "template", label: "Template" },
-    { value: "development", label: "Development" },
+    { value: "QR", label: "Questions/Reponses" },
   ];
   const handleSelectChange = (value: string) => {
     console.log("Selected value:", value);
@@ -31,7 +30,7 @@ export default function ExamInputs() {
       <div className="space-y-6">
 
         <div>
-          <Label htmlFor="inputTwo">Titre de l'exercice</Label>
+          <Label htmlFor="inputTwo">Titre du sujet</Label>
           <Input type="text" id="inputTwo" placeholder="Ex : LMD" />
         </div>
         <div>
@@ -39,9 +38,8 @@ export default function ExamInputs() {
           <TextArea
             rows={2}
             value={messageTwo}
-            error
+            
             onChange={(value) => setMessageTwo(value)}
-            hint="Please enter a valid message."
           />
         </div>
 

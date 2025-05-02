@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import LineChart from "../Charts/LineChart";
 import TauxReussite from "../../components/ecommerce/TauxReussite";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "../../components/ui/table";
 
@@ -64,15 +63,13 @@ export default function LearningProgressPage() {
 
   return (
     <div className="overflow-hidden bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
-      <h2 className="text-xl font-semibold mb-4">Taux d'Apprentissage</h2>
-
       {/* Graphique de progression */}
       <div className="mb-8">
-        <h3 className="text-lg font-semibold">Progression dans le Temps</h3>
 <div className="col-span-12 xl:col-span-5">
           <TauxReussite />
         </div>     </div>
-
+        <div className="overflow-hidden bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
+        <div className="max-w-full overflow-x-auto">
       {/* Table des tendances d'apprentissage */}
       <div className="max-w-full overflow-x-auto mb-8">
         <h3 className="text-lg font-semibold">Tendances d'Apprentissage</h3>
@@ -103,6 +100,8 @@ export default function LearningProgressPage() {
             ))}
           </TableBody>
         </Table>
+      </div>
+      </div>
       </div>
 
       {/* Section pour afficher le taux global d'amélioration */}

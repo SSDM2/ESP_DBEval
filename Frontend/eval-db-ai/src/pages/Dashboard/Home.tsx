@@ -45,11 +45,6 @@ export default function Home() {
           <StatisticsChart />
 
 
-          {/* <div className="col-span-12 xl:col-span-5">
-          <DemographicCard />
-        </div>
-         */}
-
         </div>
       </div>
     </>

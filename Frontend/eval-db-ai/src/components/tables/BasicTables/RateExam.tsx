@@ -6,7 +6,7 @@ import {
   TableRow,
 } from "../../ui/table";
 import Badge from "../../ui/badge/Badge";
-import { FileIcon, MoreDotIcon, PencilIcon, TrashBinIcon } from "../../../icons";
+import { BoxIcon, FileIcon, MoreDotIcon, PencilIcon, TrashBinIcon } from "../../../icons";
 import { Dropdown } from "../../ui/dropdown/Dropdown";
 import { DropdownItem } from "../../ui/dropdown/DropdownItem";
 import { useState } from "react";
@@ -39,9 +39,9 @@ const tableData: Exams[] = [
   },
   {
     id: 2,
-    name: "Projet de MySQL",
+    name: "Projet de SQL",
     variants: "Master 1",
-    echeance: "12/04/2025",
+    echeance: "10/04/2025",
     type: "QCM",
     status: "indisponible",
     successRate: 60,
@@ -100,69 +100,52 @@ export default function RateExam() {
 
   return (
     <div className="overflow-hidden bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
+      <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
+
+        <div className="flex space-x-3 items-center">
+          <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
+            <BoxIcon className="text-blue-800 size-6 dark:text-white/90" />
+          </div>
+          <h3 className="text-sm text-blue-800 dark:text-white/90">
+            Liste des taux de reussite
+          </h3>
+        </div>
+      </div>
       <div className="max-w-full overflow-x-auto">
         <Table>
           {/* Table Header */}
-          <TableHeader className="border-blue-800 dark:border-gray-800 border-y">
-            <TableRow>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                ID
-              </TableCell>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                Contenu
-              </TableCell>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                Type
-              </TableCell>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                Echeance
-              </TableCell>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                Status
-              </TableCell>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                Taux de Réussite
-              </TableCell>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                Exercice
-              </TableCell>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                Correction
-              </TableCell>
-              <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                Actions
-              </TableCell>
+          <TableHeader className="bg-sky-800">
+            <TableRow className="border-blue-800 dark:border-gray-800 border-y">
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">ID</TableCell>
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">Contenu</TableCell>
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">Type</TableCell>
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">Échéance</TableCell>
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">Status</TableCell>
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">Taux de Réussite</TableCell>
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">Exercice</TableCell>
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">Correction</TableCell>
+              <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">Actions</TableCell>
             </TableRow>
           </TableHeader>
 
           {/* Table Body */}
           <TableBody className="divide-y divide-gray-100 dark:divide-gray-800">
             {tableData.map((exam) => (
-              <TableRow key={exam.id}>
-                <TableCell className="p-3 font-bold text-gray-500 text-theme-sm dark:text-gray-400">
-                  {exam.id}
-                </TableCell>
-                <TableCell className="py-2">
+              <TableRow key={exam.id} className="hover:bg-blue-50 dark:hover:bg-gray-950">
+                <TableCell className="py-2 text-center font-bold text-gray-500 text-theme-sm dark:text-gray-400">{exam.id}</TableCell>
+                <TableCell>
                   <div className="flex items-center gap-3">
                     <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
                       <img src={exam.image} className="h-[50px] w-[50px]" alt={exam.name} />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {exam.name}
-                      </p>
-                      <span className="text-gray-500 text-theme-xs dark:text-gray-400">
-                        {exam.variants}
-                      </span>
+                      <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">{exam.name}</p>
+                      <span className="text-gray-500 text-theme-xs dark:text-gray-400">{exam.variants}</span>
                     </div>
                   </div>
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {exam.type}
-                </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {exam.echeance}
-                </TableCell>
+                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">{exam.type}</TableCell>
+                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">{exam.echeance}</TableCell>
                 <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                   <Badge
                     size="sm"
@@ -170,23 +153,17 @@ export default function RateExam() {
                       exam.status === "corrige"
                         ? "success"
                         : exam.status === "en cours"
-                        ? "warning"
-                        : "error"
+                          ? "warning"
+                          : "error"
                     }
                   >
                     {exam.status}
                   </Badge>
                 </TableCell>
-                {/* Taux de Réussite */}
                 <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                   <div className="flex items-center gap-2">
-                    <div className="font-medium text-theme-sm dark:text-white/90">
-                      {exam.successRate}%
-                    </div>
-                    <Badge
-                      color={exam.successRate >= 80 ? "success" : "warning"}
-                      size="sm"
-                    >
+                    <div className="font-medium text-theme-sm dark:text-white/90">{exam.successRate}%</div>
+                    <Badge color={exam.successRate >= 80 ? "success" : "warning"} size="sm">
                       {exam.successRate >= 80 ? "Réussi" : "En progrès"}
                     </Badge>
                   </div>
@@ -194,45 +171,36 @@ export default function RateExam() {
                 <TableCell className="text-gray-500 text-theme-sm dark:text-gray-400">
                   <div className="flex h-[50px] items-center w-[100px] overflow-hidden rounded-md">
                     <div>{exam.file}</div>
-                    <div>
-                      <FileIcon className="size-5" />
-                    </div>
+                    <FileIcon className="size-5 ml-2" />
                   </div>
                 </TableCell>
                 <TableCell className="text-gray-500 text-theme-sm dark:text-gray-400">
                   <div className="flex h-[50px] items-center w-[100px] overflow-hidden rounded-md">
                     <div>{exam.correction}</div>
-                    <div>
-                      <FileIcon className="size-5" />
-                    </div>
+                    <FileIcon className="size-5 ml-2" />
                   </div>
                 </TableCell>
                 <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
                   <div className="relative inline-block">
-                    <button
-                      className="dropdown-toggle"
-                      onClick={() => handleToggleDropdown(exam.id)}
-                    >
+                    <button onClick={() => handleToggleDropdown(exam.id)}>
                       <MoreDotIcon className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 size-6" />
                     </button>
                     <Dropdown
                       isOpen={openDropdownId === exam.id}
                       onClose={handleCloseDropdown}
-                      className="w-40 p-2 dark:bg-gary-900"
+                      className="w-40 p-2"
                     >
                       <DropdownItem
                         onItemClick={handleCloseDropdown}
-                        className="flex w-full items-center space-x-2 font-normal text-left text-red-500 rounded-lg hover:bg-gary-50 hover:text-red-700"
+                        className="flex items-center text-red-500 hover:text-red-700"
                       >
-                        <TrashBinIcon className="text-red-500 dark:hover:text-gray-300 size-4" />
-                        <div>Supprimer</div>
+                        <TrashBinIcon className="size-4 mr-2" /> Supprimer
                       </DropdownItem>
                       <DropdownItem
                         onItemClick={handleCloseDropdown}
-                        className="flex w-full items-center space-x-2 font-normal text-left gray-gray-500 rounded-lg hover:bg-gray-100 hover:gray-gray-700 dark:gray-gray-400 dark:hover:bg-white/6 dark:bg:gray-gray-200"
+                        className="flex items-center"
                       >
-                        <PencilIcon className="gray-gray-500 hover:gray-gray-700 dark:hover:gray-gray-300 size-4" />
-                        <div>Modifier</div>
+                        <PencilIcon className="size-4 mr-2" /> Modifier
                       </DropdownItem>
                     </Dropdown>
                   </div>
@@ -243,5 +211,6 @@ export default function RateExam() {
         </Table>
       </div>
     </div>
+
   );
 }

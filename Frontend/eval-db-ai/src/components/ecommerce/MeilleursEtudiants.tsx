@@ -7,6 +7,7 @@ import {
 } from "../ui/table";
 import Badge from "../ui/badge/Badge";
 import { GroupIcon } from "../../icons";
+import NotificationDropdown from "../header/NotificationDropdown";
 
 // Define the TypeScript interface for the table rows
 interface user {
@@ -25,60 +26,63 @@ const tableData: user[] = [
   {
     id: 1,
     name: "Serigne Modou Thiam",
-    classe: "Master 1",
-    taux: "91",
-    note: "15",
+    classe: "Master 1 Informatique",
+    taux: "98",
+    note: "18",
     status: "Delivered",
-    image: "/images/user/user-01.png", // Replace with actual image URL
+    image: "/images/user/user-01.png",
   },
   {
     id: 2,
-    name: "Serigne Modou Thiam",
-    classe: "Master IABD",
-    taux: "51",
-    note: "12",
-    status: "Pending",
-    image: "/images/user/user-01.png", // Replace with actual image URL
+    name: "Awa Ndiaye",
+    classe: "Master 2 Big Data",
+    taux: "95",
+    note: "17",
+    status: "Delivered",
+    image: "/images/user/user.png",
   },
   {
     id: 3,
-    name: "Serigne Modou Thiam",
-    classe: "Master IABD",
+    name: "Mamadou Diop",
+    classe: "Licence 3 Réseaux",
     taux: "95",
-    note: "18",
+    note: "17.5",
     status: "Delivered",
-    image: "/images/user/user-01.png", // Replace with actual image URL
+    image: "/images/user/user.png",
   },
   {
     id: 4,
-    name: "Serigne Modou Thiam",
-    classe: "Master IABD",
+    name: "Fatou Sarr",
+    classe: "Master 1 IOT",
     taux: "77",
     note: "16",
     status: "Canceled",
-    image: "/images/user/user-01.png", // Replace with actual image URL
+    image: "/images/user/user.png",
   },
   {
     id: 5,
-    name: "Serigne Modou Thiam",
-    classe: "Master IABD",
+    name: "Cheikh Ba",
+    classe: "Licence 2 Informatique",
     taux: "77",
     note: "20",
     status: "Delivered",
-    image: "/images/user/user-01.png", // Replace with actual image URL
-  },
+    image: "/images/user/user.png",
+  }
+
 ];
 
 export default function MeilleursEtudiants() {
   return (
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
+      <div>
+      </div>
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex space-x-3 items-center">
           <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
-          <GroupIcon className="text-blue-800 size-6 dark:text-white/90" /> 
-        </div>
-          <h3 className="text-lg font-semibold text-blue-800 dark:text-white/90">  
-          5 Meilleurs Etudiants   
+            <GroupIcon className="text-blue-800 size-6 dark:text-white/90" />
+          </div>
+          <h3 className="text-lg font-semibold text-blue-800 dark:text-white/90">
+            5 Meilleurs Etudiants
           </h3>
 
         </div>
@@ -127,95 +131,100 @@ export default function MeilleursEtudiants() {
           </button>
         </div>
       </div>
-      <div className="max-w-full overflow-x-auto">
-        <Table>
-          {/* Table Header */}
-          <TableHeader className="border-blue-800 dark:border-gray-800 border-y">
-            <TableRow>
-              <TableCell
-                isHeader
-                className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400"
-              >
-                Rang
-              </TableCell>
-              <TableCell
-                isHeader
-                className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400"
-              >
-                Etudiant
-              </TableCell>
-              <TableCell
-                isHeader
-                className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400"
-              >
-                Note
-              </TableCell>
-              <TableCell
-                isHeader
-                className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400"
-              >
-                Taux de reussite
-              </TableCell>
-              <TableCell
-                isHeader
-                className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400"
-              >
-                Status
-              </TableCell>
-            </TableRow>
-          </TableHeader>
-
-          {/* Table Body */}
-
-          <TableBody className="divide-y divide-gray-100 dark:divide-gray-800">
-            {tableData.map((user) => (
-              <TableRow key={user.id} className="">
-                <TableCell className="py-3 font-bold text-gray-500 text-theme-sm dark:text-gray-400">
-                  {user.id}
+      <div>
+        <div className="max-w-full overflow-x-auto">
+          <Table>
+            {/* Table Header */}
+            <TableHeader className="bg-sky-800">
+              <TableRow className="border-blue-800 dark:border-gray-800 border-y">
+                <TableCell
+                  isHeader
+                  className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Rang
                 </TableCell>
-                <TableCell className="py-2">
-                  <div className="flex items-center gap-3">
-                    <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
-                      <img
-                        src={user.image}
-                        className="h-[50px] w-[50px]"
-                        alt={user.name}
-                      />
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                        {user.name}
-                      </p>
-                      <span className="text-gray-500 text-theme-xs dark:text-gray-400">
-                        {user.classe}
-                      </span>
-                    </div>
-                  </div>
+                <TableCell
+                  isHeader
+                  className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Étudiant
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {user.note}
+                <TableCell
+                  isHeader
+                  className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Note
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {user.taux}
+                <TableCell
+                  isHeader
+                  className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Taux de Réussite
                 </TableCell>
-                <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  <Badge
-                    size="sm"
-                    color={
-                      user.status === "Delivered"
-                        ? "success"
-                        : user.status === "Pending"
-                        ? "warning"
-                        : "error"
-                    }
-                  >
-                    {user.status}
-                  </Badge>
+                <TableCell
+                  isHeader
+                  className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400"
+                >
+                  Statut
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+
+            {/* Table Body */}
+            <TableBody className="divide-y divide-gray-100 dark:divide-gray-800">
+              {tableData.map((user) => (
+                <TableRow
+                  key={user.id}
+                  className="hover:bg-blue-50 dark:hover:bg-gray-950"
+                >
+                  <TableCell className="py-3 font-bold text-gray-500 text-theme-sm dark:text-gray-400">
+                    {user.id}
+                  </TableCell>
+                  <TableCell className="py-2">
+                    <div className="flex items-center gap-3">
+                      <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
+                        <img
+                          src={user.image}
+                          className="h-[50px] w-[50px]"
+                          alt={user.name}
+                        />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                          {user.name}
+                        </p>
+                        <span className="text-gray-500 text-theme-xs dark:text-gray-400">
+                          {user.classe}
+                        </span>
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                    {user.note}
+                  </TableCell>
+                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                    {user.taux}%
+                  </TableCell>
+                  <TableCell className="py-3 text-theme-sm">
+                    <Badge
+                      size="sm"
+                      color={
+                        user.status === "Delivered"
+                          ? "success"
+                          : user.status === "Pending"
+                            ? "warning"
+                            : "error"
+                      }
+                    >
+                      {user.status}
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+
+        </div>
       </div>
     </div>
   );

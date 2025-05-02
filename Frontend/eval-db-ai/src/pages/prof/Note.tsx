@@ -1,19 +1,7 @@
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
-import DefaultInputs from "../../components/form/form-elements/DefaultInputs";
-import InputGroup from "../../components/form/form-elements/InputGroup";
-import DropzoneComponent from "../../components/form/form-elements/DropZone";
-import CheckboxComponents from "../../components/form/form-elements/CheckboxComponents";
-import RadioButtons from "../../components/form/form-elements/RadioButtons";
-import ToggleSwitch from "../../components/form/form-elements/ToggleSwitch";
-import FileInputExample from "../../components/form/form-elements/FileInputExample";
-import SelectInputs from "../../components/form/form-elements/SelectInputs";
-import TextAreaInput from "../../components/form/form-elements/TextAreaInput";
-import InputStates from "../../components/form/form-elements/InputStates";
 import PageMeta from "../../components/common/PageMeta";
-import { BoxIcon, GroupIcon } from "../../icons";
+import { BoxIcon, GridIcon } from "../../icons";
 import Button from "../../components/ui/button/Button";
-import TauxReussite from "../../components/ecommerce/TauxReussite";
-import NombreEtudiant from "../../components/ecommerce/NombreEtudiant";
 import SoumissionStat from "../../components/ecommerce/SoumissionStat";
 import ComponentCard from "../../components/common/ComponentCard";
 import ResponsiveImage from "../../components/ui/images/ResponsiveImage";
@@ -45,7 +33,7 @@ export default function Note() {
 
               <div className="flex space-x-3 items-center">
                 <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
-                  <GroupIcon className="text-blue-800 size-6 dark:text-white/90" />
+                  <GridIcon className="text-blue-800 size-6 dark:text-white/90" />
                 </div>
                 <h3 className="text-sm text-blue-800 dark:text-white/90">
                 Liste des Notes proposée par l'IA

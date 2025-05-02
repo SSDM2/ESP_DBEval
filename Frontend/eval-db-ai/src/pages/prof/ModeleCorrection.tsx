@@ -11,6 +11,7 @@ import ResponsiveImage from "../../components/ui/images/ResponsiveImage";
 import SoumissionStat from "../../components/ecommerce/SoumissionStat";
 import CorrectionModelList from "../../components/tables/BasicTables/CorrectionModelList";
 import Button from "../../components/ui/button/Button";
+import StatProjets from "../../components/ecommerce/StatProjets";
 
 
 
@@ -28,18 +29,17 @@ export default function CorrectionModels() {
   return (
     <div className="space-y-4">
       <PageMeta
-        title="React.js Form Elements Dashboard | TailAdmin - React.js Admin Dashboard Template"
-        description="This is React.js Form Elements  Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
+        title="SmartEdu"
+        description="SmartEdu"
       />
       <PageBreadcrumb pageTitle="Corrections" />
-      <ComponentCard title="Bienvenue dans votre SmartEdu">
-          <ResponsiveImage />
+      <ComponentCard title="Corrections des Projets">
         <div className="flex justify-center items-center col-span-12 space-x-6 xl:col-span-7">
           <div>
         <SoumissionStat />
           </div>
           <div>
-        <SoumissionStat />
+        <StatProjets />
           </div>
       </div>
         </ComponentCard>
@@ -53,7 +53,7 @@ export default function CorrectionModels() {
                   <GroupIcon className="text-blue-800 size-6 dark:text-white/90" />
                 </div>
                 <h3 className="text-lg font-semibold text-blue-800 dark:text-white/90">
-                  Liste des Corrections proposée par l'IA
+                  Liste des corrections proposée par l'IA
                 </h3>
               </div>
               <Button className="bg-green-500 hover:bg-green-600"

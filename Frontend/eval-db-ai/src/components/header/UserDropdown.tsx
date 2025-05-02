@@ -2,8 +2,13 @@ import { useState } from "react";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { Link } from "react-router";
+import { useUser } from "../../context/UserContext";
 
 export default function UserDropdown() {
+
+  const { user, loading } = useUser();
+
+
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropdown() {
@@ -20,14 +25,19 @@ export default function UserDropdown() {
         className="flex items-center text-gray-700 dropdown-toggle dark:text-gray-400"
       >
         <span className="mr-3 overflow-hidden rounded-full h-11 w-11">
-          <img src="/images/user/owner.jpg" alt="User" />
+          <img src={`${user?.photo}`} alt="User" />
         </span>
 
-        <span className="block mr-1 font-medium text-theme-sm">Groupe Focus</span>
+        <div>
+
+          <span className="block mr-1 font-medium text-theme-sm">            {user?.name}          </span>
+          <span className="text-sm p-1 px-2 bg-blue-950 rounded-md text-white ">
+            {user?.role}
+          </span>
+        </div>
         <svg
-          className={`stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          }`}
+          className={`stroke-gray-500 dark:stroke-gray-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""
+            }`}
           width="18"
           height="20"
           viewBox="0 0 18 20"
@@ -51,10 +61,12 @@ export default function UserDropdown() {
       >
         <div>
           <span className="block font-medium text-gray-700 text-theme-sm dark:text-gray-400">
-            Groupe Focus
+          {user?.role}
+
           </span>
           <span className="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400">
-            groupefocus@gmail.com
+          {user?.email}
+
           </span>
         </div>
 

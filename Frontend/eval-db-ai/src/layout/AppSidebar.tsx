@@ -31,7 +31,7 @@ const navItemsProfesseur: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Tableau de Bord",
-    path: "/dashboard",
+    path: "/",
     description: "Vue d'ensemble des performances et des statistiques.",
   },
 
@@ -51,6 +51,11 @@ const navItemsProfesseur: NavItem[] = [
       { 
         name: "Sujets Déposés", 
         path: "/view-exams", 
+        description: "Voir les sujets déposés par les autres professeurs.",
+      },
+      { 
+        name: "Notes de projets", 
+        path: "/notes", 
         description: "Voir les sujets déposés par les autres professeurs.",
       },
     ],
@@ -103,13 +108,18 @@ const navItemsProfesseur: NavItem[] = [
     subItems: [
       { 
         name: "Créer un Compte Professeur", 
-        path: "/create-teacher-account", 
+        path: "/create-account", 
         description: "Créer et gérer les comptes pour les professeurs.",
       },
       { 
         name: "Créer un Compte Étudiant", 
         path: "/create-student-account", 
         description: "Créer et gérer les comptes pour les étudiants.",
+      },
+      { 
+        name: "Comptes", 
+        path: "/users", 
+        description: "Gestion des comptes des étudiants.",
       },
     ],
   },
@@ -119,22 +129,22 @@ const navItemsEtudiant: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Tableau de Bord",
-    path: "/etudiant/",
+    path: "/student",
     description: "Accédez à vos statistiques, vos progrès et les activités récentes.",
   },
 
   {
-    name: "Mes Examen et Sujets",
+    name: "Examens",
     icon: <ListIcon />,
     description: "Accéder aux sujets déposés et soumettre des réponses.",
     subItems: [
       { 
-        name: "Voir les Sujets d'Examen", 
+        name: "Sujets d'Examen", 
         path: "/exams", 
         description: "Accédez aux sujets déposés par les professeurs.",
       },
       { 
-        name: "Soumettre une Réponse", 
+        name: "Depots", 
         path: "/submit-answer", 
         description: "Soumettez vos réponses en format PDF (avec Drag & Drop).",
       },
@@ -146,7 +156,7 @@ const navItemsEtudiant: NavItem[] = [
     name: "Corrections et Notes",
     icon: <CheckCircleIcon />,
     description: "Consulter les corrections automatiques et les notes attribuées.",
-    path: "/my-corrections",
+    path: "/my-notes",
   },
 
   {
@@ -154,14 +164,6 @@ const navItemsEtudiant: NavItem[] = [
     icon: <TimeIcon />,
     description: "Suivez vos progrès avec des graphiques d'évolution.",
     path: "/performance-tracking",
-  },
-
-  // Menu Profil
-  {
-    name: "Mon Profil",
-    icon: <UserCircleIcon />,
-    path: "/profile",
-    description: "Accédez à vos informations personnelles et paramètres.",
   },
 
  
@@ -187,7 +189,7 @@ const othersItems: NavItem[] = [
       fill=""
     />
   </svg>,
-    path: "/logout",
+    path: "/signin",
     description: "Se déconnecter de l'application.",
   },
    // Menu Profil
@@ -388,8 +390,7 @@ const AppSidebar: React.FC = () => {
                             className={`ml-auto ${isActive(subItem.path)
                               ? "menu-dropdown-badge-active"
                               : "menu-dropdown-badge-inactive"
-                              } menu-dropdown-badge`}
-                          >
+                              } menu-dropdown-badge`}>
                             new
                           </span>
                         )}
@@ -437,12 +438,14 @@ const AppSidebar: React.FC = () => {
           {isExpanded || isHovered || isMobileOpen ? (
             <>
               <h1 className="text-2xl font-extrabold text-blue-800">
-                SmartEdu
+                SmartEdu 
+               
               </h1>
             </>
           ) : (
             <h1 className="text-2xl font-extrabold text-blue-800">
               SM
+               
             </h1>
           )}
         </Link>

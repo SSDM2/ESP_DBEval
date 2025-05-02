@@ -5,8 +5,9 @@ import Badge from "../../components/ui/badge/Badge";
 import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import PageMeta from "../../components/common/PageMeta";
 import ComponentCard from "../../components/common/ComponentCard";
-import { BoxIcon, BoxIconLine, GroupIcon } from "../../icons";
+import { BoxIcon, BoxIconLine, GridIcon, GroupIcon, PlusIcon } from "../../icons";
 import Stats from "../../components/ecommerce/Stat";
+import Button from "../../components/ui/button/Button";
 
 interface QuestionCorrection {
   id: number;
@@ -56,7 +57,7 @@ export default function CorrectionPage() {
       textColor: "red", // Couleur du texte personnalisée
     },
   ];
-  
+
 
   const { examId } = useParams<{ examId: string }>(); // Récupérer l'ID de l'examen depuis l'URL
   const [corrections, setCorrections] = useState<QuestionCorrection[]>([]);
@@ -68,58 +69,71 @@ export default function CorrectionPage() {
   }, [examId]);
 
   return (
-    
+
     <div className="space-y-4">
       <PageMeta
-        title="React.js Form Elements Dashboard | TailAdmin - React.js Admin Dashboard Template"
-        description="This is React.js Form Elements  Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
+        title="Stat"
+        description="Stat"
       />
       <PageBreadcrumb pageTitle="Taux de Reussite" />
 
 
-    
       <div className="grid grid-cols-12 gap-4 md:gap-6">
 
-        <div className="col-span-12 col-md-12 xl:col-span-12">
-          <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
-            <div>
+      <div className="col-span-12 col-md-12 xl:col-span-12 space-y-8">
+      <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
+            <div >
               <ComponentCard title="Statistiques du taux de reussite">
                 <div className="sm:grid-cols-1  sm:space-x-2 flex space-y-4 justify-center md:items-center md:col-span-12 md:space-x-6 xl:col-span-7">
                   <Stats stats={statsData} />
                 </div>
               </ComponentCard>
-              <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
-
-                <div className="flex space-x-3 items-center">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
-                    <BoxIcon className="text-blue-800 size-6 dark:text-white/90" />
-                  </div>
-                  <h3 className="text-sm text-blue-800 dark:text-white/90">
-                    Liste des taux de reussite
-                  </h3>
-                </div>
-              </div>
+             
             </div>
-       <Table>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6">
+
+
+            <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex space-x-3 items-center">
+                <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl dark:bg-gray-800">
+                  <GroupIcon className="text-blue-800 size-6 dark:text-white/90" />
+                </div>
+                <h3 className="text-lg font-semibold text-blue-800 dark:text-white/90">
+                  Liste des taux de reussite
+                </h3>
+              </div>
+              <Button
+                className="bg-green-500 hover:bg-green-600"
+                size="sm"
+                variant="primary"
+                endIcon={<GridIcon className="size-5" />}
+              >
+                Ajouter
+              </Button>
+            </div>
+
+            <Table>
               {/* Table Header */}
-              <TableHeader className="border-blue-800 dark:border-gray-800 border-y">
-                <TableRow>
-                  <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
+              <TableHeader className="bg-sky-800">
+                <TableRow className="border-blue-800 dark:border-gray-800 border-y">
+                  <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">
                     N°
                   </TableCell>
-                  <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
+                  <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">
                     Question
                   </TableCell>
-                  <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
+                  <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">
                     Réponse Étudiant
                   </TableCell>
-                  <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
+                  <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">
                     Réponse Correcte
                   </TableCell>
-                  <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
+                  <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">
                     Statut
                   </TableCell>
-                  <TableCell isHeader className="py-3 font-bold text-gray-500 text-start text-theme-xs dark:text-gray-400">
+                  <TableCell isHeader className="p-3 font-bold text-gray-100 text-start text-theme-xs dark:text-gray-400">
                     Commentaires
                   </TableCell>
                 </TableRow>
@@ -128,12 +142,23 @@ export default function CorrectionPage() {
               {/* Table Body */}
               <TableBody className="divide-y divide-gray-100 dark:divide-gray-800">
                 {corrections.map((correction) => (
-                  <TableRow key={correction.id}>
-                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400 text-sm">{correction.id}</TableCell>
-                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400 text-sm">{correction.questionTitle}</TableCell>
-                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400 text-sm">{correction.studentAnswer}</TableCell>
-                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400 text-sm">{correction.correctAnswer}</TableCell>
-                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400 text-sm">
+                  <TableRow
+                    key={correction.id}
+                    className="hover:bg-blue-50 dark:hover:bg-gray-950"
+                  >
+                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                      {correction.id}
+                    </TableCell>
+                    <TableCell className="py-3 text-gray-800 text-theme-sm dark:text-white/90">
+                      {correction.questionTitle}
+                    </TableCell>
+                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                      {correction.studentAnswer}
+                    </TableCell>
+                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                      {correction.correctAnswer}
+                    </TableCell>
+                    <TableCell className="py-3 text-theme-sm">
                       <Badge
                         size="sm"
                         color={correction.status === "correct" ? "success" : "error"}
@@ -141,13 +166,16 @@ export default function CorrectionPage() {
                         {correction.status === "correct" ? "Correct" : "Incorrect"}
                       </Badge>
                     </TableCell>
-                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400 text-sm">{correction.feedback}</TableCell>
+                    <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                      {correction.feedback}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
-          </div>
+
           </div>
         </div>
-      </div>  );
+      </div >
+    </div >);
 }

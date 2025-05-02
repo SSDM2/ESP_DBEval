@@ -69,7 +69,7 @@ export default function TauxReussite() {
         <div className="flex justify-between ">
           <div>
             <h3 className="text-lg font-semibold text-blue-800 dark:text-white/90">
-              Exercice            </h3>
+              Projets            </h3>
             <p className="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
               Taux de reussite            </p>
           </div>

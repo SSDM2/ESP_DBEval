@@ -13,16 +13,15 @@ interface StatItem {
 
 interface StatsProps {
   stats: StatItem[]; // Liste de statistiques à afficher
-  className?: string;
 }
 
-const Stats: React.FC<StatsProps> = ({ stats, className = "" }) => {
+const Stats: React.FC<StatsProps> = ({ stats }) => {
   return (
-    <div className={`flex gap-4 sm:grid-cols-2 md:gap-6 ${className}`}>
+    <div className={`flex gap-4 sm:grid-cols-2 md:gap-6`}>
       {stats.map((stat, index) => (
         <div
           key={index}
-          className={`rounded-2xl border border-gray-200 bg-${stat.bgColor}-50 dark:border-gray-800 dark:bg-white/[0.03] md:p-4`}
+          className={`rounded-2xl border ${stat.bgColor? 'border-'+stat.bgColor+'100' : ' red'}-100 bg-${stat.bgColor}-50 dark:border-gray-800 dark:bg-white/[0.03] md:p-4`}
         >
           <div className="flex items-center space-x-2">
             <div className="flex items-center">
